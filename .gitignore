@@ -40,3 +40,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .claude/worktrees/
+
+# local media assets — never commit video/audio/stills (large, and the
+# intro clip + extracted frame are sourced from copyrighted film footage;
+# keep them local-only, see
+# docs/superpowers/plans/2026-08-19-portfolio-intro-zoom-scene.md)
+public/*.mp4
+public/*.mov
+public/*.mkv
+public/*.mp3
+public/*.wav
+public/leap-of-faith-*
+public/scene-source.*
