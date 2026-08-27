@@ -9,11 +9,13 @@ export interface WindowHotspot {
 }
 
 export const sceneConfig = {
-  // No real video yet — IntroVideo (Task 5) treats a falsy videoSrc as
-  // "skip the intro entirely." Set this to a real path (e.g.
-  // '/intro.mp4') once the edited video is ready; nothing else needs to
-  // change.
-  videoSrc: null as string | null,
+  // IntroVideo treats a falsy videoSrc as "skip the intro entirely."
+  // Local compressed copies for preview. Before deploying, swap videoSrc /
+  // videoWebmSrc / videoPosterSrc for the Vercel Blob CDN URLs — the .mp4 /
+  // .webm in public/ are gitignored and won't exist on the deployed build.
+  videoSrc: '/intro.mp4' as string | null,
+  videoWebmSrc: '/intro.webm' as string | null,
+  videoPosterSrc: '/intro-poster.jpg',
   posterSrc: '/scene-bg.png',
   // Matches public/scene-bg.png (1584x672). Re-derive if the art is regenerated.
   aspectRatio: 1584 / 672,

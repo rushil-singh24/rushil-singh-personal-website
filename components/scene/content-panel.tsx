@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useSceneState } from '@/lib/scene-state-context'
 import { sectionRegistry } from '@/sections/registry'
-import { PlaceholderSection } from '@/sections/placeholder-section'
 
 export function ContentPanel() {
   const { state, goBack } = useSceneState()
@@ -19,9 +18,9 @@ export function ContentPanel() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 24 }}
           transition={{ duration: 0.4 }}
-          className="fixed inset-0 z-40 flex items-center justify-center bg-black/50"
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-4"
         >
-          <PlaceholderSection title={entry.title} onBack={goBack} />
+          <entry.component onBack={goBack} />
         </motion.div>
       )}
     </AnimatePresence>

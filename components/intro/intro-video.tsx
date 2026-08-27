@@ -12,8 +12,7 @@ export function IntroVideo() {
   const [showTapForSound, setShowTapForSound] = useState(true)
   const [autoplayBlocked, setAutoplayBlocked] = useState(false)
 
-  // No real video configured yet: skip straight to the main scene instead
-  // of rendering a dead intro. See content/scene.config.ts.
+  // No video configured: skip straight to the scene.
   useEffect(() => {
     if (!sceneConfig.videoSrc) {
       finishIntro()
@@ -25,8 +24,7 @@ export function IntroVideo() {
     const video = videoRef.current
     if (!video || !sceneConfig.videoSrc) return
 
-    // Prefetch the scene background (and, later, section-placeholder
-    // assets) while the video plays so the transition has no pop-in.
+    // Prefetch the scene background so the crossfade has no pop-in.
     const preload = new Image()
     preload.src = sceneConfig.posterSrc
 
@@ -55,17 +53,28 @@ export function IntroVideo() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black" onClick={isMuted ? handleUnmute : undefined}>
+    <div
+      className="fixed inset-0 z-50 bg-black"
+      onClick={isMuted ? handleUnmute : undefined}
+    >
       <video
         ref={videoRef}
         className="h-full w-full object-cover"
-        src={sceneConfig.videoSrc}
-        poster={sceneConfig.posterSrc}
+        poster={sceneConfig.videoPosterSrc ?? sceneConfig.posterSrc}
         muted={isMuted}
         autoPlay
         playsInline
         onEnded={finishIntro}
-      />
+      >
+        {sceneConfig.videoWebmSrc && (
+          <source src={sceneConfig.videoWebmSrc} type="video/webm" />
+        )}
+        {sceneConfig.videoSrc && <source src={sceneConfig.videoSrc} type="video/mp4" />}
+      </video>
+
+      <div className="pointer-events-none absolute right-5 top-5 max-w-[60vw] text-right font-mono text-[11px] leading-tight text-white/70">
+        Scene from <span className="text-white/90">Spider-Man: Into the Spider-Verse</span>
+      </div>
 
       <AnimatePresence>
         {autoplayBlocked && (
@@ -104,7 +113,7 @@ export function IntroVideo() {
           event.stopPropagation()
           finishIntro()
         }}
-        className="absolute right-6 top-6 rounded-full bg-black/60 px-4 py-2 text-sm text-white"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 rounded-full border border-white/30 bg-black/50 px-5 py-2 text-sm text-white backdrop-blur transition-colors hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
       >
         Skip Intro
       </button>

@@ -17,7 +17,7 @@ export function WindowHotspotButton({
     <motion.button
       onClick={onClick}
       aria-label={hotspot.label}
-      className="absolute rounded-sm"
+      className="absolute rounded-[3px] border border-white/20 ring-1 ring-cyan-300/20"
       style={{
         left: `${hotspot.xPct}%`,
         top: `${hotspot.yPct}%`,
@@ -27,10 +27,18 @@ export function WindowHotspotButton({
       initial="rest"
       whileHover="hover"
       variants={{
-        rest: { scale: 1, boxShadow: '0 0 0px rgba(242, 201, 76, 0)' },
-        hover: { scale: 1.08, boxShadow: '0 0 24px 6px rgba(242, 201, 76, 0.65)' },
+        rest: {
+          scale: 1,
+          boxShadow:
+            '0 0 14px 2px rgba(56, 224, 245, 0.28), inset 0 0 12px rgba(255,255,255,0.12)',
+        },
+        hover: {
+          scale: 1.08,
+          boxShadow:
+            '0 0 30px 8px rgba(56, 224, 245, 0.7), inset 0 0 18px rgba(255,255,255,0.25)',
+        },
       }}
-      animate={isFlickering ? { opacity: [1, 0.35, 1] } : { opacity: 1 }}
+      animate={isFlickering ? { opacity: [1, 0.45, 1] } : { opacity: 1 }}
       transition={
         isFlickering
           ? { duration: 0.2, opacity: { duration: 0.9, ease: 'easeInOut' } }
