@@ -147,7 +147,7 @@ function TimelineColumn({
       >
         {heading}
       </p>
-      <ol className="space-y-2">
+      <ol className="space-y-5">
         {entries.map((e, idx) => {
           const isOpen = openId === e.id
           return (
@@ -157,15 +157,15 @@ function TimelineColumn({
                 <button
                   onClick={() => onToggle(e.id)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-start gap-3 rounded-lg px-2 py-2.5 text-left transition-colors hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/50"
+                  className="flex w-full items-start gap-4 rounded-lg px-3 py-4 text-left transition-colors hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/50"
                 >
-                  <Icon className="mt-0.5 h-4 w-4 shrink-0 text-fuchsia-300" />
+                  <Icon className="mt-1 h-5 w-5 shrink-0 text-fuchsia-300" />
                   <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-baseline gap-x-2">
-                      <span className="font-semibold text-white">{e.title}</span>
+                      <span className="text-lg font-semibold text-white">{e.title}</span>
                       <span className="text-sm text-fuchsia-300">· {e.org}</span>
                     </span>
-                    <span className="mt-0.5 block font-mono text-[11px] text-zinc-500">
+                    <span className="mt-1 block font-mono text-xs text-zinc-500">
                       {e.period}
                     </span>
                   </span>
@@ -190,9 +190,9 @@ function TimelineColumn({
                             {e.location}
                           </p>
                         )}
-                        <ul className="space-y-2">
+                        <ul className="space-y-2.5">
                           {e.points.map((p, i) => (
-                            <li key={i} className="text-[14px] leading-relaxed text-zinc-300">
+                            <li key={i} className="text-[15px] leading-relaxed text-zinc-300">
                               {p}
                             </li>
                           ))}

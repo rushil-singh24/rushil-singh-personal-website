@@ -17,7 +17,7 @@ export function ContentPanel() {
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.5, delay: 0.12, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.42, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
           className="fixed inset-0 z-40"
         >
           <entry.component onBack={goBack} />

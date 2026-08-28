@@ -15,5 +15,5 @@ export const sectionRegistry: Record<
   experience: { title: 'Experience', component: ExperienceSection },
   techstack: { title: 'Tech Stack', component: TechStackSection },
   projects: { title: 'Projects', component: ProjectsSection },
-  contact: { title: 'Contact', component: ContactSection },
+  contact: { title: 'Personal Info', component: ContactSection },
 }

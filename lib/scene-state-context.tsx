@@ -13,6 +13,7 @@ type SceneStateContextValue = {
   finishIntro: () => void
   clickWindow: (sectionId: string) => void
   goBack: () => void
+  replayIntro: () => void
 }
 
 const SceneStateContext = createContext<SceneStateContextValue | null>(null)
@@ -44,12 +45,17 @@ export function SceneStateProvider({ children }: { children: React.ReactNode }) 
   const clickWindow = (sectionId: string) => dispatch({ type: 'WINDOW_CLICKED', sectionId })
   const goBack = () => dispatch({ type: 'BACK' })
 
+  const replayIntro = () => {
+    window.sessionStorage.removeItem(INTRO_SEEN_KEY)
+    dispatch({ type: 'REPLAY_INTRO' })
+  }
+
   // Avoid mounting the video element for a single frame before the
   // session-storage check resolves.
   const effectiveState: SceneState = hydrated ? state : { view: 'intro' }
 
   return (
-    <SceneStateContext.Provider value={{ state: effectiveState, finishIntro, clickWindow, goBack }}>
+    <SceneStateContext.Provider value={{ state: effectiveState, finishIntro, clickWindow, goBack, replayIntro }}>
       {children}
     </SceneStateContext.Provider>
   )

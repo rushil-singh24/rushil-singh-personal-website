@@ -2,7 +2,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { animate, motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { animate, motion, useMotionValue } from 'framer-motion'
 import { sceneConfig } from '@/content/scene.config'
 import { useSceneState } from '@/lib/scene-state-context'
 import { useReducedMotion } from '@/lib/use-reduced-motion'
@@ -11,31 +11,12 @@ import { WindowHotspotButton } from './window-hotspot'
 export const ZOOM_SCALE = 5.5
 
 export function SkyscraperScene() {
-  const { state, clickWindow } = useSceneState()
+  const { state, clickWindow, replayIntro } = useSceneState()
   const frameRef = useRef<HTMLDivElement>(null)
   const reducedMotion = useReducedMotion()
 
   const isZoomed = state.view === 'zoomed'
   const activeSectionId = state.view === 'zoomed' ? state.sectionId : null
-
-  // Ambient mouse parallax — only while sitting on the un-zoomed scene.
-  const pointerX = useMotionValue(0)
-  const pointerY = useMotionValue(0)
-  const parallaxX = useSpring(useTransform(pointerX, [-1, 1], [-12, 12]), { stiffness: 60, damping: 20 })
-  const parallaxY = useSpring(useTransform(pointerY, [-1, 1], [-12, 12]), { stiffness: 60, damping: 20 })
-
-  useEffect(() => {
-    if (reducedMotion || isZoomed) return
-
-    const handlePointerMove = (event: PointerEvent) => {
-      const { innerWidth, innerHeight } = window
-      pointerX.set((event.clientX / innerWidth) * 2 - 1)
-      pointerY.set((event.clientY / innerHeight) * 2 - 1)
-    }
-
-    window.addEventListener('pointermove', handlePointerMove)
-    return () => window.removeEventListener('pointermove', handlePointerMove)
-  }, [reducedMotion, isZoomed, pointerX, pointerY])
 
   // Idle window flicker — at most one window pulses opacity at a time, on
   // a randomized low-frequency timer, only while sitting on the scene.
@@ -70,7 +51,7 @@ export function SkyscraperScene() {
     const frame = frameRef.current
     if (!frame) return
 
-    const duration = reducedMotion ? 0 : 0.9
+    const duration = reducedMotion ? 0 : 0.75
     const options = { duration, ease: 'easeOut' as const }
 
     if (!activeSectionId) {
@@ -123,8 +104,6 @@ export function SkyscraperScene() {
             x: zoomX,
             y: zoomY,
             scale: zoomScale,
-            translateX: isZoomed || reducedMotion ? 0 : parallaxX,
-            translateY: isZoomed || reducedMotion ? 0 : parallaxY,
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -144,6 +123,15 @@ export function SkyscraperScene() {
           ))}
         </motion.div>
       </div>
+
+      {!isZoomed && (
+        <button
+          onClick={replayIntro}
+          className="fixed bottom-6 left-6 z-20 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-4 py-2 font-mono text-xs uppercase tracking-[0.15em] text-white/80 backdrop-blur transition-colors hover:bg-black/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+        >
+          <span aria-hidden>&#9654;</span> Replay intro
+        </button>
+      )}
     </div>
   )
 }

@@ -72,7 +72,7 @@ export function SectionShell({
           <span aria-hidden className="text-base transition-transform group-hover:-translate-x-1">
             &larr;
           </span>
-          back to the city
+          back to rushil&rsquo;s city
         </button>
         <span className={`font-mono text-xs uppercase tracking-[0.2em] ${a.text}`}>
           {index}
@@ -80,7 +80,7 @@ export function SectionShell({
       </header>
 
       <div className="relative z-10 flex-1 overflow-y-auto">
-        <div className="mx-auto w-full max-w-3xl px-6 pb-28 pt-4 sm:px-12">
+        <div className="mx-auto w-full max-w-4xl px-6 pb-28 pt-4 sm:px-12">
           <h2 className="relative font-[family-name:var(--font-display)] text-6xl uppercase leading-[0.88] tracking-tight sm:text-8xl">
             <span aria-hidden className={`absolute left-[3px] top-[3px] ${a.text} opacity-35`}>
               {title}

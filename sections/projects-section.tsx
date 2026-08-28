@@ -69,6 +69,14 @@ export function ProjectsSection({ onBack }: { onBack: () => void }) {
             </article>
           </Reveal>
         ))}
+        <Reveal delay={0.12}>
+          <article className="flex h-full min-h-[180px] flex-col items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-6 text-center">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+              More coming soon
+            </p>
+            <p className="mt-2 text-sm text-zinc-600">New projects in progress.</p>
+          </article>
+        </Reveal>
       </div>
       <Reveal>
         <p className="font-mono text-sm text-zinc-500">

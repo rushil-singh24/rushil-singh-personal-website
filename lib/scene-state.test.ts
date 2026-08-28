@@ -58,4 +58,16 @@ describe('sceneReducer', () => {
     )
     expect(result).toEqual({ view: 'intro' })
   })
+
+  it('REPLAY_INTRO returns to intro from the scene', () => {
+    expect(sceneReducer({ view: 'scene' }, { type: 'REPLAY_INTRO' })).toEqual({
+      view: 'intro',
+    })
+  })
+
+  it('REPLAY_INTRO returns to intro from a zoomed section', () => {
+    expect(
+      sceneReducer({ view: 'zoomed', sectionId: 'about' }, { type: 'REPLAY_INTRO' })
+    ).toEqual({ view: 'intro' })
+  })
 })

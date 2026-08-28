@@ -16,11 +16,16 @@ import {
   Mountain,
   Film,
   Spade,
+  Trophy,
+  Music,
+  Waves,
+  Dumbbell,
+  ChefHat,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 const INTRO =
-  "I'm an Artificial Intelligence and Information Systems student at Carnegie Mellon University, from Massachusetts. My interests span web and application development, quantitative finance, and applications of machine learning across fields. I have experience building AI-powered applications, developing full-stack software, and conducting professional AI/ML research. My career interests include software engineering, product management, and AI engineering — I'm especially drawn to building technical products that connect emerging AI capabilities with practical, real-world use. In my free time I enjoy hiking, watching films, playing poker, and more."
+  "I'm an Artificial Intelligence and Information Systems student at Carnegie Mellon University from Massachusetts. My interests span web/application development, quantitative finance, and applications of machine learning in various fields. I have experience building AI-powered applications, developing full-stack software, and conducting professional research in AI/ML. My career interests include software engineering, product management, and AI engineering. I am particularly interested in building technical products that connect emerging AI capabilities with practical, real-world applications. In my free time, I enjoy hiking, watching films, playing poker, and more."
 
 const COURSEWORK = [
   'Data Structures & Algorithms',
@@ -30,7 +35,7 @@ const COURSEWORK = [
   'Discrete Math',
   'Probability Theory',
   'Linear Algebra',
-  'Calculus 3',
+  'Multivariate Calculus',
 ]
 
 const INTERESTS: { label: string; icon: LucideIcon }[] = [
@@ -48,6 +53,11 @@ const HOBBIES: { label: string; icon: LucideIcon }[] = [
   { label: 'Hiking', icon: Mountain },
   { label: 'Film', icon: Film },
   { label: 'Poker', icon: Spade },
+  { label: 'Sports', icon: Trophy },
+  { label: 'Music', icon: Music },
+  { label: 'Swimming', icon: Waves },
+  { label: 'Lifting', icon: Dumbbell },
+  { label: 'Cooking', icon: ChefHat },
 ]
 
 export function AboutSection({ onBack }: { onBack: () => void }) {

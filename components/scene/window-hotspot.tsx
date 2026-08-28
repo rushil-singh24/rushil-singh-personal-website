@@ -13,11 +13,12 @@ export function WindowHotspotButton({
   onClick: () => void
   isFlickering: boolean
 }) {
+  const rot = hotspot.rotate ?? 0
   return (
     <motion.button
       onClick={onClick}
       aria-label={`Open ${hotspot.label}`}
-      className="absolute flex items-center justify-center rounded-[3px]"
+      className="absolute flex flex-col items-center justify-center"
       style={{
         left: `${hotspot.xPct}%`,
         top: `${hotspot.yPct}%`,
@@ -27,8 +28,12 @@ export function WindowHotspotButton({
       initial="rest"
       whileHover="hover"
       variants={{
-        rest: { scale: 1, boxShadow: '0 0 0 0 rgba(255,255,255,0)' },
-        hover: { scale: 1.04, boxShadow: '0 0 44px 12px rgba(255,255,255,0.32)' },
+        rest: { scale: 1, rotate: rot, boxShadow: '0 0 0 0 rgba(255,255,255,0)' },
+        hover: {
+          scale: 1.04,
+          rotate: rot,
+          boxShadow: '0 0 44px 12px rgba(255,255,255,0.32)',
+        },
       }}
       animate={isFlickering ? { opacity: [1, 0.6, 1] } : { opacity: 1 }}
       transition={
@@ -38,11 +43,16 @@ export function WindowHotspotButton({
       }
     >
       <span
-        className="pointer-events-none select-none px-2 text-center font-[family-name:var(--font-display)] text-[clamp(0.85rem,2.4vw,2rem)] uppercase leading-[0.9] tracking-[0.02em] text-[#0a0a14]"
+        className="pointer-events-none select-none px-2 text-center font-[family-name:var(--font-display)] text-[clamp(0.8rem,2.3vw,1.9rem)] uppercase leading-[0.9] tracking-[0.02em] text-[#0a0a14]"
         style={{ textShadow: '0 1px 0 rgba(255,255,255,0.3)' }}
       >
         {hotspot.label}
       </span>
+      {hotspot.sublabel && (
+        <span className="pointer-events-none mt-1 select-none px-2 text-center font-mono text-[clamp(0.38rem,0.85vw,0.68rem)] font-semibold uppercase tracking-[0.1em] text-[#0a0a14]/75">
+          {hotspot.sublabel}
+        </span>
+      )}
     </motion.button>
   )
 }

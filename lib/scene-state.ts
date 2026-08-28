@@ -7,6 +7,7 @@ export type SceneAction =
   | { type: 'INTRO_FINISHED' }
   | { type: 'WINDOW_CLICKED'; sectionId: string }
   | { type: 'BACK' }
+  | { type: 'REPLAY_INTRO' }
 
 export const INTRO_SEEN_KEY = 'portfolio:introSeen'
 
@@ -28,6 +29,9 @@ export function sceneReducer(state: SceneState, action: SceneAction): SceneState
 
     case 'BACK':
       return state.view === 'zoomed' ? { view: 'scene' } : state
+
+    case 'REPLAY_INTRO':
+      return { view: 'intro' }
 
     default:
       return state
