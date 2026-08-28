@@ -14,8 +14,10 @@ type Entry = {
   period: string
   location?: string
   // Drop a square logo at public/logos/<file> and set it here to replace
-  // the generic briefcase / people icon.
+  // the generic briefcase / people icon. `logoBg: 'dark'` for light/white
+  // logos that need a dark chip to be visible.
   logo?: string
+  logoBg?: 'light' | 'dark'
   points: string[]
 }
 
@@ -104,6 +106,8 @@ const ENTRIES: Entry[] = [
     org: 'Traders @ CMU',
     period: 'Active Member',
     location: 'Pittsburgh, PA',
+    logo: '/logos/traders.png',
+    logoBg: 'dark',
     points: [
       "Built a cryptocurrency arbitrage tool achieving a 65% win rate through fine-tuning an ML model and backtesting with trade simulations to optimize discrepancies between Kalshi's BTC price prediction market and its sourcing",
     ],
@@ -133,7 +137,9 @@ function EntryIcon({ entry, side }: { entry: Entry; side: 'work' | 'involvement'
       <img
         src={entry.logo}
         alt=""
-        className="mt-0.5 h-6 w-6 shrink-0 rounded-[5px] bg-white object-contain p-[3px] ring-1 ring-white/15"
+        className={`mt-0.5 h-6 w-6 shrink-0 rounded-[5px] object-contain p-[3px] ring-1 ring-white/15 ${
+          entry.logoBg === 'dark' ? 'bg-[#0f1120]' : 'bg-white'
+        }`}
       />
     )
   }

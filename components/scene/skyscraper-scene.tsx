@@ -86,19 +86,18 @@ export function SkyscraperScene() {
   }
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-black">
+    <div className="flex h-screen w-screen items-center justify-center overflow-hidden bg-black">
+      {/* Frame is exactly the rendered image box: width fills the viewport,
+          height follows the image's aspect, capped so it also fits vertically.
+          Hotspot %s map 1:1 to the art in any viewport — no object-cover crop. */}
       <div
         ref={frameRef}
         onClick={handleCalibrationClick}
-        className="relative overflow-hidden"
-        style={{
-          aspectRatio: sceneConfig.aspectRatio,
-          width: '100%',
-          maxHeight: '100%',
-        }}
+        className="relative"
+        style={{ width: '100%', maxWidth: `calc(100vh * ${sceneConfig.aspectRatio})` }}
       >
         <motion.div
-          className="absolute inset-0"
+          className="relative"
           style={{
             transformOrigin: '0 0',
             x: zoomX,
@@ -110,7 +109,8 @@ export function SkyscraperScene() {
           <img
             src={sceneConfig.posterSrc}
             alt="Interactive skyscraper scene"
-            className="absolute inset-0 h-full w-full object-cover"
+            draggable={false}
+            className="block w-full select-none"
           />
 
           {sceneConfig.windows.map((hotspot) => (
