@@ -4,6 +4,8 @@ export interface WindowHotspot {
   label: string
   sublabel?: string
   rotate?: number
+  /** Multiplier on the label font size (1 = default). */
+  labelScale?: number
   xPct: number
   yPct: number
   wPct: number
@@ -27,10 +29,10 @@ export const sceneConfig = {
   // `rotate` (deg) tilts a hotspot to match its billboard's angle in the
   // art so the label reads as painted on. Tune alongside x/y/w/h.
   windows: [
-    { id: 'billboard-about', sectionId: 'about', label: 'Rushil Singh', rotate: 1, xPct: 37.5, yPct: 44, wPct: 24, hPct: 20 },
-    { id: 'billboard-experience', sectionId: 'experience', label: 'Experience', rotate: 4, xPct: 19.5, yPct: 28.5, wPct: 14, hPct: 13 },
-    { id: 'billboard-techstack', sectionId: 'techstack', label: 'Tech Stack', rotate: -6, xPct: 66.5, yPct: 27, wPct: 14, hPct: 12 },
-    { id: 'billboard-projects', sectionId: 'projects', label: 'Projects', rotate: -7, xPct: 13, yPct: 71.5, wPct: 14, hPct: 13 },
-    { id: 'billboard-contact', sectionId: 'contact', label: 'Personal Info', rotate: 8, xPct: 68, yPct: 71, wPct: 18, hPct: 13 },
+    { id: 'billboard-about', sectionId: 'about', label: 'Rushil Singh', labelScale: 1.9, rotate: 1, xPct: 33, yPct: 42, wPct: 34, hPct: 24 },
+    { id: 'billboard-experience', sectionId: 'experience', label: 'Experience', rotate: -6, xPct: 17, yPct: 28, wPct: 16, hPct: 15 },
+    { id: 'billboard-techstack', sectionId: 'techstack', label: 'Tech Stack', labelScale: 0.9, rotate: -6, xPct: 67, yPct: 26, wPct: 16, hPct: 14 },
+    { id: 'billboard-projects', sectionId: 'projects', label: 'Projects', rotate: -6, xPct: 12, yPct: 70, wPct: 16, hPct: 15 },
+    { id: 'billboard-contact', sectionId: 'contact', label: 'Personal Info', labelScale: 0.9, rotate: 5, xPct: 68, yPct: 71, wPct: 18, hPct: 15 },
   ] satisfies WindowHotspot[],
 }

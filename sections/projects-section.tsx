@@ -3,12 +3,14 @@
 import { SectionShell } from './section-shell'
 import { Reveal } from '@/components/reveal'
 import { ExternalLink } from 'lucide-react'
+import { SiGithub } from 'react-icons/si'
 
 type Project = {
   name: string
   stack: string[]
   points: string[]
-  href: string
+  demoHref: string
+  sourceHref: string
 }
 
 const PROJECTS: Project[] = [
@@ -19,7 +21,9 @@ const PROJECTS: Project[] = [
       'Content-based music recommendation engine using Euclidean-distance matching on Spotify audio features, with fallback strategies and exclusion logic filtering 1,000+ previously-heard tracks.',
       'Gamified UI/UX with Framer Motion and real-time feedback loops behind secure login auth, plus an API integration layer with smart caching and batch processing.',
     ],
-    href: 'https://tune-bloom.vercel.app/login',
+    demoHref: 'https://tune-bloom.vercel.app/login',
+    // TODO(rushil): exact repo URL
+    sourceHref: 'https://github.com/rushil-singh24',
   },
   {
     name: 'Option(al) Risk — Quant Finance Tool',
@@ -28,7 +32,9 @@ const PROJECTS: Project[] = [
       'Full-stack dashboard for options-portfolio risk analytics, running the Black-Scholes model across 61+ tickers so traders can analyze portfolio sensitivity.',
       'Monte Carlo simulation engine processing 10,000+ price-path scenarios to compute Value-at-Risk at the 95th and 99th percentiles.',
     ],
-    href: 'https://options-risk-frontend.onrender.com/',
+    demoHref: 'https://options-risk-frontend.onrender.com/',
+    // TODO(rushil): exact repo URL
+    sourceHref: 'https://github.com/rushil-singh24',
   },
 ]
 
@@ -57,15 +63,26 @@ export function ProjectsSection({ onBack }: { onBack: () => void }) {
                   </li>
                 ))}
               </ul>
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-1.5 self-start rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.15em] text-cyan-200 transition-colors hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50"
-              >
-                Live demo
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                <a
+                  href={p.demoHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.15em] text-cyan-200 transition-colors hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50"
+                >
+                  Live demo
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <a
+                  href={p.sourceHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/[0.04] px-3 py-1.5 font-mono text-xs uppercase tracking-[0.15em] text-zinc-200 transition-colors hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                >
+                  Source code
+                  <SiGithub className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </article>
           </Reveal>
         ))}
@@ -78,19 +95,6 @@ export function ProjectsSection({ onBack }: { onBack: () => void }) {
           </article>
         </Reveal>
       </div>
-      <Reveal>
-        <p className="font-mono text-sm text-zinc-500">
-          More at{' '}
-          <a
-            href="https://github.com/rushil-singh24"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cyan-300 underline-offset-4 hover:underline"
-          >
-            github.com/rushil-singh24
-          </a>
-        </p>
-      </Reveal>
     </SectionShell>
   )
 }
