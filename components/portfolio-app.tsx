@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useSceneState } from '@/lib/scene-state-context'
 import { IntroVideo } from './intro/intro-video'
-import { SkyscraperScene } from './scene/skyscraper-scene'
+import { VoidScene } from './scene/void-scene'
 import { ContentPanel } from './scene/content-panel'
 import { CursorTrail } from './cursor-trail'
 
@@ -34,7 +34,7 @@ export function PortfolioApp() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: 'easeInOut' }}
         >
-          <SkyscraperScene />
+          <VoidScene />
           <ContentPanel />
         </motion.div>
       )}
