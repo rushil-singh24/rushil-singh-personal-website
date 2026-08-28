@@ -83,6 +83,7 @@ const ENTRIES: Entry[] = [
     org: 'Firefly Coders',
     period: 'January 2025 – April 2025',
     location: 'Northborough, MA',
+    logo: '/logos/firefly.png',
     points: [
       'Developed an interactive learning library hosting multi-format educational materials, producing 100+ hours of content through practice problems and videos to improve accessibility for 80+ elementary and middle school students',
       'Piloted curriculums for competition math classes and coding camps in Python, Scratch, and Sphero by establishing scalable lesson plans and frameworks for future instructors and program branches to ensure long-term sustainability',
@@ -95,6 +96,7 @@ const ENTRIES: Entry[] = [
     org: '180 Degrees Consulting',
     period: 'Active Member',
     location: 'Pittsburgh, PA',
+    logo: '/logos/180dc.png',
     points: [
       'Selected from a competitive applicant pool to undergo new consultant training involving developing public speaking skills, learning deck design, and more in preparation to consult non-profits in Pittsburgh on real-world projects',
     ],

@@ -46,7 +46,7 @@ export function WindowHotspotButton({
       <span
         className="pointer-events-none select-none whitespace-nowrap px-1 text-center font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[0.02em] text-[#0a0a14]"
         style={{
-          fontSize: `calc(clamp(0.65rem, 1.9vw, 1.55rem) * ${scale})`,
+          fontSize: `calc(clamp(0.8rem, 2.4vw, 2rem) * ${scale})`,
           textShadow: '0 1px 0 rgba(255,255,255,0.3)',
         }}
       >
