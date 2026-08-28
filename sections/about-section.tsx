@@ -136,10 +136,6 @@ export function AboutSection() {
           ))}
         </div>
       </Reveal>
-
-      <Reveal delay={0.14}>
-        <p className="font-mono text-sm text-zinc-500">Southborough, MA &nbsp;·&nbsp; Pittsburgh, PA</p>
-      </Reveal>
     </SectionShell>
   )
 }

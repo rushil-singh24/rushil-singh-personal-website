@@ -74,7 +74,7 @@ export function ContactSection() {
       </Reveal>
 
       <Reveal>
-        <p className="font-mono text-sm text-zinc-500">Pittsburgh, PA</p>
+        <p className="font-mono text-sm text-zinc-500">Southborough, MA</p>
       </Reveal>
     </SectionShell>
   )
