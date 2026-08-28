@@ -43,7 +43,7 @@ export function WindowHotspotButton({
       }
     >
       <span
-        className="pointer-events-none select-none px-2 text-center font-[family-name:var(--font-display)] text-[clamp(0.8rem,2.3vw,1.9rem)] uppercase leading-[0.9] tracking-[0.02em] text-[#0a0a14]"
+        className="pointer-events-none select-none whitespace-nowrap px-1 text-center font-[family-name:var(--font-display)] text-[clamp(0.65rem,1.9vw,1.55rem)] uppercase leading-[0.9] tracking-[0.02em] text-[#0a0a14]"
         style={{ textShadow: '0 1px 0 rgba(255,255,255,0.3)' }}
       >
         {hotspot.label}

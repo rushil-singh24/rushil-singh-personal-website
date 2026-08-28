@@ -27,10 +27,10 @@ export const sceneConfig = {
   // `rotate` (deg) tilts a hotspot to match its billboard's angle in the
   // art so the label reads as painted on. Tune alongside x/y/w/h.
   windows: [
-    { id: 'billboard-about', sectionId: 'about', label: 'Rushil Singh', rotate: 1, xPct: 37, yPct: 44, wPct: 24, hPct: 20 },
-    { id: 'billboard-experience', sectionId: 'experience', label: 'Experience', rotate: 9, xPct: 21, yPct: 24, wPct: 13, hPct: 14 },
-    { id: 'billboard-techstack', sectionId: 'techstack', label: 'Tech Stack', rotate: -9, xPct: 68, yPct: 22, wPct: 13, hPct: 14 },
-    { id: 'billboard-projects', sectionId: 'projects', label: 'Projects', rotate: -8, xPct: 12.5, yPct: 65, wPct: 13.5, hPct: 15 },
-    { id: 'billboard-contact', sectionId: 'contact', label: 'Personal Info', rotate: 11, xPct: 70, yPct: 72, wPct: 17, hPct: 15 },
+    { id: 'billboard-about', sectionId: 'about', label: 'Rushil Singh', rotate: 1, xPct: 37.5, yPct: 44, wPct: 24, hPct: 20 },
+    { id: 'billboard-experience', sectionId: 'experience', label: 'Experience', rotate: 4, xPct: 19.5, yPct: 28.5, wPct: 14, hPct: 13 },
+    { id: 'billboard-techstack', sectionId: 'techstack', label: 'Tech Stack', rotate: -6, xPct: 66.5, yPct: 27, wPct: 14, hPct: 12 },
+    { id: 'billboard-projects', sectionId: 'projects', label: 'Projects', rotate: -7, xPct: 13, yPct: 71.5, wPct: 14, hPct: 13 },
+    { id: 'billboard-contact', sectionId: 'contact', label: 'Personal Info', rotate: 8, xPct: 68, yPct: 71, wPct: 18, hPct: 13 },
   ] satisfies WindowHotspot[],
 }
