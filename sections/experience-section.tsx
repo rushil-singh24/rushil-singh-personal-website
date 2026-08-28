@@ -29,6 +29,7 @@ const ENTRIES: Entry[] = [
     org: 'Twinly',
     period: 'June 2026 – Present',
     location: 'Remote',
+    logo: '/logos/twinly.png',
     points: [
       'Designed and shipped cross-platform AI agent capabilities in Swift and Python including voice cloning, reservation booking, and automated gaming accessible through natural prompts, supporting 100+ users and 2,000+ followers',
       'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining consistently updated releases through Git version control, code reviews, and PR/MR-based feature integration',
@@ -41,6 +42,7 @@ const ENTRIES: Entry[] = [
     org: 'Perforated AI',
     period: 'May 2026 – Present',
     location: 'Pittsburgh, PA',
+    logo: '/logos/perforated-ai.png',
     points: [
       'Developed PyTorch-based transformer optimization techniques using Perforated Backpropagation and artificial dendrite architectures, reducing model parameters by 60% while accelerating trading-model inference by 15%+',
       'Designed W&B hyperparameter sweeps and multi-seed experimentation across 15+ parameter combinations to optimize dendrite thresholds, regularization, and module placement against baseline performance',
@@ -53,6 +55,7 @@ const ENTRIES: Entry[] = [
     org: 'ListenFirst',
     period: 'July 2026 – August 2026',
     location: 'New York City, NY',
+    logo: '/logos/listenfirst.png',
     points: [
       "Built AI-powered workflows shipped as organization-wide Claude Skills through Python, JavaScript, and RESTful APIs that reduced manual reporting effort by 75% across 60+ projects as the Partnerships unit's sole intern",
       'Developed production automation for monthly billing and scheduling across 40+ client accounts, cutting API call volume by 90%+ through optimized data pipelines and surfacing $15K+ in billing discrepancies missed manually',
@@ -65,6 +68,7 @@ const ENTRIES: Entry[] = [
     org: 'Unanimous AI',
     period: 'September 2025 – April 2026',
     location: 'San Francisco, CA',
+    logo: '/logos/unanimous.png',
     points: [
       'Partnered with Professor Ganesh Mani of CMU and Unanimous AI to advance the application of conversational swarm intelligence in enhancing sports contract prediction market accuracy through an IRB-standard research study',
       'Built and tested predictive models using APIs, the Thinkscape platform, and insights from published research to translate complex data from 40+ users/swarm into ~25% outperformance of benchmark Kalshi/Polymarket lines',
@@ -111,6 +115,7 @@ const ENTRIES: Entry[] = [
     org: 'ScottyLabs | Labrador Committee',
     period: 'September 2025 – January 2026',
     location: 'Pittsburgh, PA',
+    logo: '/logos/scottylabs.png',
     points: [
       'Led development for ScottyLinked, a LinkedIn-esque platform to connect CMU students for job and research opportunities on campus through core data models and matching logic that sorted users by 5+ skill proficiency factors',
       'Steered collaboration with Design+Technology departments with 6 others to create a UI/UX design validated by users through surveys and research on 10+ social network platforms, leading to features built with Next, React, & Supabase',
@@ -128,7 +133,7 @@ function EntryIcon({ entry, side }: { entry: Entry; side: 'work' | 'involvement'
       <img
         src={entry.logo}
         alt=""
-        className="mt-1 h-5 w-5 shrink-0 rounded-sm bg-white/90 object-contain p-0.5"
+        className="mt-0.5 h-6 w-6 shrink-0 rounded-[5px] bg-white object-contain p-[3px] ring-1 ring-white/15"
       />
     )
   }
