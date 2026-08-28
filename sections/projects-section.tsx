@@ -2,11 +2,13 @@
 
 import { SectionShell } from './section-shell'
 import { Reveal } from '@/components/reveal'
+import { ExternalLink } from 'lucide-react'
 
 type Project = {
   name: string
   stack: string[]
   points: string[]
+  href: string
 }
 
 const PROJECTS: Project[] = [
@@ -17,6 +19,7 @@ const PROJECTS: Project[] = [
       'Content-based music recommendation engine using Euclidean-distance matching on Spotify audio features, with fallback strategies and exclusion logic filtering 1,000+ previously-heard tracks.',
       'Gamified UI/UX with Framer Motion and real-time feedback loops behind secure login auth, plus an API integration layer with smart caching and batch processing.',
     ],
+    href: 'https://tune-bloom.vercel.app/login',
   },
   {
     name: 'Option(al) Risk — Quant Finance Tool',
@@ -25,6 +28,7 @@ const PROJECTS: Project[] = [
       'Full-stack dashboard for options-portfolio risk analytics, running the Black-Scholes model across 61+ tickers so traders can analyze portfolio sensitivity.',
       'Monte Carlo simulation engine processing 10,000+ price-path scenarios to compute Value-at-Risk at the 95th and 99th percentiles.',
     ],
+    href: 'https://options-risk-frontend.onrender.com/',
   },
 ]
 
@@ -46,13 +50,22 @@ export function ProjectsSection({ onBack }: { onBack: () => void }) {
                   </li>
                 ))}
               </ul>
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-4 flex-1 space-y-2">
                 {p.points.map((pt, i) => (
                   <li key={i} className="text-sm leading-relaxed text-zinc-300">
                     {pt}
                   </li>
                 ))}
               </ul>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-1.5 self-start rounded-lg border border-cyan-400/30 bg-cyan-400/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.15em] text-cyan-200 transition-colors hover:bg-cyan-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/50"
+              >
+                Live demo
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
             </article>
           </Reveal>
         ))}

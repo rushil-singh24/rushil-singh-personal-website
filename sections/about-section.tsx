@@ -2,12 +2,25 @@
 
 import { SectionShell } from './section-shell'
 import { Reveal } from '@/components/reveal'
-import { GraduationCap, BookOpen, Sparkles } from 'lucide-react'
+import {
+  GraduationCap,
+  BookOpen,
+  Bot,
+  MessageSquare,
+  BrainCircuit,
+  Gauge,
+  TrendingUp,
+  Handshake,
+  Layers,
+  Sparkles,
+  Mountain,
+  Film,
+  Spade,
+} from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
-// TODO(rushil): replace with your own first-person intro paragraph.
 const INTRO =
-  'Intro paragraph coming from Rushil — a short first-person note on who he is, what he is drawn to in AI and systems work, and what he is looking for next. This placeholder will be swapped for the real copy.'
+  "I'm an Artificial Intelligence and Information Systems student at Carnegie Mellon University, from Massachusetts. My interests span web and application development, quantitative finance, and applications of machine learning across fields. I have experience building AI-powered applications, developing full-stack software, and conducting professional AI/ML research. My career interests include software engineering, product management, and AI engineering — I'm especially drawn to building technical products that connect emerging AI capabilities with practical, real-world use. In my free time I enjoy hiking, watching films, playing poker, and more."
 
 const COURSEWORK = [
   'Data Structures & Algorithms',
@@ -20,14 +33,21 @@ const COURSEWORK = [
   'Calculus 3',
 ]
 
-// TODO(rushil): replace with real interests (and swap icons to match).
 const INTERESTS: { label: string; icon: LucideIcon }[] = [
-  { label: 'Interest one', icon: Sparkles },
-  { label: 'Interest two', icon: Sparkles },
-  { label: 'Interest three', icon: Sparkles },
-  { label: 'Interest four', icon: Sparkles },
-  { label: 'Interest five', icon: Sparkles },
-  { label: 'Interest six', icon: Sparkles },
+  { label: 'Agentic AI', icon: Bot },
+  { label: 'Large Language Models (LLMs)', icon: MessageSquare },
+  { label: 'Machine Learning', icon: BrainCircuit },
+  { label: 'Model optimization', icon: Gauge },
+  { label: 'Algorithmic trading', icon: TrendingUp },
+  { label: 'Human–AI interaction', icon: Handshake },
+  { label: 'Full-stack product development', icon: Layers },
+  { label: 'AI-powered applications', icon: Sparkles },
+]
+
+const HOBBIES: { label: string; icon: LucideIcon }[] = [
+  { label: 'Hiking', icon: Mountain },
+  { label: 'Film', icon: Film },
+  { label: 'Poker', icon: Spade },
 ]
 
 export function AboutSection({ onBack }: { onBack: () => void }) {
@@ -46,9 +66,7 @@ export function AboutSection({ onBack }: { onBack: () => void }) {
             </p>
           </div>
           <p className="mt-3 text-lg font-medium text-white">B.S. Information Systems</p>
-          <p className="text-zinc-400">
-            Minor in Artificial Intelligence &middot; Expected 2028
-          </p>
+          <p className="text-zinc-400">Minor in Artificial Intelligence &middot; Expected 2028</p>
           <p className="text-zinc-400">Pittsburgh, PA</p>
 
           <div className="mt-5 border-t border-white/10 pt-4">
@@ -76,9 +94,11 @@ export function AboutSection({ onBack }: { onBack: () => void }) {
         <div>
           <div className="flex items-center gap-2">
             <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">Interests</p>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              Professional interests
+            </p>
           </div>
-          <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <ul className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {INTERESTS.map((it) => (
               <li
                 key={it.label}
@@ -89,6 +109,23 @@ export function AboutSection({ onBack }: { onBack: () => void }) {
               </li>
             ))}
           </ul>
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.12}>
+        <div className="flex flex-wrap items-center gap-2.5">
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+            Off the clock
+          </span>
+          {HOBBIES.map((h) => (
+            <span
+              key={h.label}
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-zinc-300"
+            >
+              <h.icon className="h-3.5 w-3.5 text-zinc-400" />
+              {h.label}
+            </span>
+          ))}
         </div>
       </Reveal>
     </SectionShell>
