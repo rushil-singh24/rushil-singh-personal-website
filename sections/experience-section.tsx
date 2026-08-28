@@ -13,33 +13,37 @@ type Entry = {
   org: string
   period: string
   location?: string
+  // Drop a square logo at public/logos/<file> and set it here to replace
+  // the generic briefcase / people icon.
+  logo?: string
   points: string[]
 }
 
-// Newest first within each column. TODO(rushil): add more entries here.
+// Work is newest-first. Involvement lists active roles first, then ended ones.
+// Bullet text is verbatim from Rushil's resume / messages — do not rephrase.
 const ENTRIES: Entry[] = [
   {
     id: 'twinly',
     kind: 'work',
     title: 'Software Engineer',
     org: 'Twinly',
-    period: 'Jun 2026 — Present',
+    period: 'June 2026 – Present',
     location: 'Remote',
     points: [
-      'Designed and shipped cross-platform AI agent capabilities in Swift and Python — voice cloning, reservation booking, and automated gaming through natural prompts — supporting 100+ users and 2,000+ followers.',
-      'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining releases through Git, code reviews, and PR/MR-based integration.',
+      'Designed and shipped cross-platform AI agent capabilities in Swift and Python including voice cloning, reservation booking, and automated gaming accessible through natural prompts, supporting 100+ users and 2,000+ followers',
+      'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining consistently updated releases through Git version control, code reviews, and PR/MR-based feature integration',
     ],
   },
   {
     id: 'perforated-ai',
     kind: 'work',
-    title: 'ML Research Collaborator',
+    title: 'Machine Learning Research Collaborator',
     org: 'Perforated AI',
-    period: 'May 2026 — Present',
+    period: 'May 2026 – Present',
     location: 'Pittsburgh, PA',
     points: [
-      'Developed PyTorch transformer optimization using Perforated Backpropagation and artificial dendrite architectures — 60% fewer model parameters while accelerating trading-model inference by 15%+.',
-      'Designed W&B hyperparameter sweeps and multi-seed experimentation across 15+ parameter combinations to tune dendrite thresholds, regularization, and module placement against baselines.',
+      'Developed PyTorch-based transformer optimization techniques using Perforated Backpropagation and artificial dendrite architectures, reducing model parameters by 60% while accelerating trading-model inference by 15%+',
+      'Designed W&B hyperparameter sweeps and multi-seed experimentation across 15+ parameter combinations to optimize dendrite thresholds, regularization, and module placement against baseline performance',
     ],
   },
   {
@@ -47,11 +51,11 @@ const ENTRIES: Entry[] = [
     kind: 'work',
     title: 'AI Engineering Intern',
     org: 'ListenFirst',
-    period: 'Jul 2026 — Aug 2026',
+    period: 'July 2026 – August 2026',
     location: 'New York City, NY',
     points: [
-      'Built AI-powered workflows shipped as organization-wide Claude Skills (Python, JavaScript, REST APIs) that cut manual reporting effort by 75% across 60+ projects — as the Partnerships unit’s sole intern.',
-      'Developed production automation for monthly billing and scheduling across 40+ client accounts, cutting API call volume 90%+ and surfacing $15K+ in billing discrepancies missed manually.',
+      "Built AI-powered workflows shipped as organization-wide Claude Skills through Python, JavaScript, and RESTful APIs that reduced manual reporting effort by 75% across 60+ projects as the Partnerships unit's sole intern",
+      'Developed production automation for monthly billing and scheduling across 40+ client accounts, cutting API call volume by 90%+ through optimized data pipelines and surfacing $15K+ in billing discrepancies missed manually',
     ],
   },
   {
@@ -59,35 +63,23 @@ const ENTRIES: Entry[] = [
     kind: 'work',
     title: 'Research Intern',
     org: 'Unanimous AI',
-    period: 'Sep 2025 — Apr 2026',
+    period: 'September 2025 – April 2026',
     location: 'San Francisco, CA',
     points: [
-      'Partnered with Professor Ganesh Mani (CMU) and Unanimous AI to advance conversational swarm intelligence for sports-contract prediction-market accuracy, in an IRB-standard research study.',
-      'Built and tested predictive models with APIs, the Thinkscape platform, and published research — turning data from 40+ users per swarm into ~25% outperformance of benchmark Kalshi / Polymarket lines.',
+      'Partnered with Professor Ganesh Mani of CMU and Unanimous AI to advance the application of conversational swarm intelligence in enhancing sports contract prediction market accuracy through an IRB-standard research study',
+      'Built and tested predictive models using APIs, the Thinkscape platform, and insights from published research to translate complex data from 40+ users/swarm into ~25% outperformance of benchmark Kalshi/Polymarket lines',
     ],
   },
   {
     id: 'firefly',
     kind: 'work',
-    title: 'Dev Intern & Lead Instructor',
+    title: 'Development Intern',
     org: 'Firefly Coders',
-    period: 'Jan 2025 — Apr 2025',
+    period: 'January 2025 – April 2025',
     location: 'Northborough, MA',
     points: [
-      'Built an interactive learning library of multi-format materials — 100+ hours of practice problems and videos — improving accessibility for 80+ elementary and middle-school students.',
-      'Piloted competition-math and coding-camp curriculums in Python, Scratch, and Sphero, with scalable lesson plans and frameworks for future instructors and program branches.',
-    ],
-  },
-  {
-    id: 'scottylabs',
-    kind: 'involvement',
-    title: 'Software Engineer',
-    org: 'ScottyLabs | Labrador Committee',
-    period: 'Sep 2025 — Jan 2026',
-    location: 'Pittsburgh, PA',
-    points: [
-      'Led development for ScottyLinked, a LinkedIn-style platform connecting CMU students for on-campus jobs and research — core data models and matching logic sorting users by 5+ skill-proficiency factors.',
-      'Drove Design + Technology collaboration with 6 others on a UI/UX validated through user surveys and research across 10+ social platforms; features built with Next, React, and Supabase.',
+      'Developed an interactive learning library hosting multi-format educational materials, producing 100+ hours of content through practice problems and videos to improve accessibility for 80+ elementary and middle school students',
+      'Piloted curriculums for competition math classes and coding camps in Python, Scratch, and Sphero by establishing scalable lesson plans and frameworks for future instructors and program branches to ensure long-term sustainability',
     ],
   },
   {
@@ -95,9 +87,10 @@ const ENTRIES: Entry[] = [
     kind: 'involvement',
     title: 'Student Consultant',
     org: '180 Degrees Consulting',
-    period: 'Active member',
+    period: 'Active Member',
+    location: 'Pittsburgh, PA',
     points: [
-      'Selected from a competitive pool for consultant training in public speaking and deck design ahead of real nonprofit projects in Pittsburgh.',
+      'Selected from a competitive applicant pool to undergo new consultant training involving developing public speaking skills, learning deck design, and more in preparation to consult non-profits in Pittsburgh on real-world projects',
     ],
   },
   {
@@ -105,15 +98,43 @@ const ENTRIES: Entry[] = [
     kind: 'involvement',
     title: 'Prediction Market Analyst',
     org: 'Traders @ CMU',
-    period: 'Active member',
+    period: 'Active Member',
+    location: 'Pittsburgh, PA',
     points: [
-      'Built a crypto arbitrage tool with a 65% win rate by fine-tuning an ML model and backtesting against Kalshi’s BTC prediction market.',
+      "Built a cryptocurrency arbitrage tool achieving a 65% win rate through fine-tuning an ML model and backtesting with trade simulations to optimize discrepancies between Kalshi's BTC price prediction market and its sourcing",
+    ],
+  },
+  {
+    id: 'scottylabs',
+    kind: 'involvement',
+    title: 'Software Engineer',
+    org: 'ScottyLabs | Labrador Committee',
+    period: 'September 2025 – January 2026',
+    location: 'Pittsburgh, PA',
+    points: [
+      'Led development for ScottyLinked, a LinkedIn-esque platform to connect CMU students for job and research opportunities on campus through core data models and matching logic that sorted users by 5+ skill proficiency factors',
+      'Steered collaboration with Design+Technology departments with 6 others to create a UI/UX design validated by users through surveys and research on 10+ social network platforms, leading to features built with Next, React, & Supabase',
     ],
   },
 ]
 
 const WORK = ENTRIES.filter((e) => e.kind === 'work')
 const INVOLVEMENT = ENTRIES.filter((e) => e.kind === 'involvement')
+
+function EntryIcon({ entry, side }: { entry: Entry; side: 'work' | 'involvement' }) {
+  if (entry.logo) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={entry.logo}
+        alt=""
+        className="mt-1 h-5 w-5 shrink-0 rounded-sm bg-white/90 object-contain p-0.5"
+      />
+    )
+  }
+  const Fallback = side === 'work' ? Briefcase : Users
+  return <Fallback className="mt-1 h-5 w-5 shrink-0 text-fuchsia-300" />
+}
 
 function TimelineColumn({
   heading,
@@ -128,7 +149,6 @@ function TimelineColumn({
   openId: string | null
   onToggle: (id: string) => void
 }) {
-  const Icon = side === 'work' ? Briefcase : Users
   const railClasses =
     side === 'work'
       ? 'border-l border-fuchsia-400/25 pl-5 md:border-l-0 md:border-r md:pl-0 md:pr-5'
@@ -159,15 +179,13 @@ function TimelineColumn({
                   aria-expanded={isOpen}
                   className="flex w-full items-start gap-4 rounded-lg px-3 py-4 text-left transition-colors hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/50"
                 >
-                  <Icon className="mt-1 h-5 w-5 shrink-0 text-fuchsia-300" />
+                  <EntryIcon entry={e} side={side} />
                   <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-baseline gap-x-2">
                       <span className="text-lg font-semibold text-white">{e.title}</span>
                       <span className="text-sm text-fuchsia-300">· {e.org}</span>
                     </span>
-                    <span className="mt-1 block font-mono text-xs text-zinc-500">
-                      {e.period}
-                    </span>
+                    <span className="mt-1 block font-mono text-xs text-zinc-500">{e.period}</span>
                   </span>
                   <ChevronDown
                     className={`mt-1 h-4 w-4 shrink-0 text-zinc-500 transition-transform ${
@@ -184,7 +202,7 @@ function TimelineColumn({
                       transition={{ duration: 0.28, ease: 'easeOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-2 pb-1 pl-9 pt-2">
+                      <div className="px-3 pb-1 pl-9 pt-2">
                         {e.location && (
                           <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-500">
                             {e.location}

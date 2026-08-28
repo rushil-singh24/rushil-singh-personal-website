@@ -51,7 +51,7 @@ export function SkyscraperScene() {
     const frame = frameRef.current
     if (!frame) return
 
-    const duration = reducedMotion ? 0 : 0.75
+    const duration = reducedMotion ? 0 : 0.55
     const options = { duration, ease: 'easeOut' as const }
 
     if (!activeSectionId) {

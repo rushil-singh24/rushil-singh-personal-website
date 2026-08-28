@@ -19,7 +19,6 @@ import {
   Trophy,
   Music,
   Waves,
-  Dumbbell,
   ChefHat,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
@@ -56,7 +55,6 @@ const HOBBIES: { label: string; icon: LucideIcon }[] = [
   { label: 'Sports', icon: Trophy },
   { label: 'Music', icon: Music },
   { label: 'Swimming', icon: Waves },
-  { label: 'Lifting', icon: Dumbbell },
   { label: 'Cooking', icon: ChefHat },
 ]
 
