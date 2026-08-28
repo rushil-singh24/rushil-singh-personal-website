@@ -8,7 +8,7 @@ import { useSceneState } from '@/lib/scene-state-context'
 import { useReducedMotion } from '@/lib/use-reduced-motion'
 import { WindowHotspotButton } from './window-hotspot'
 
-export const ZOOM_SCALE = 2.75
+export const ZOOM_SCALE = 5.5
 
 export function SkyscraperScene() {
   const { state, clickWindow } = useSceneState()
@@ -70,8 +70,8 @@ export function SkyscraperScene() {
     const frame = frameRef.current
     if (!frame) return
 
-    const duration = reducedMotion ? 0 : 0.7
-    const options = { duration, ease: 'easeInOut' as const }
+    const duration = reducedMotion ? 0 : 0.9
+    const options = { duration, ease: 'easeOut' as const }
 
     if (!activeSectionId) {
       animate(zoomX, 0, options)

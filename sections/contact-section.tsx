@@ -1,6 +1,7 @@
 'use client'
 
 import { SectionShell } from './section-shell'
+import { Reveal } from '@/components/reveal'
 
 const LINKS = [
   { label: 'Email', value: 'rushils@andrew.cmu.edu', href: 'mailto:rushils@andrew.cmu.edu' },
@@ -16,28 +17,34 @@ const LINKS = [
 export function ContactSection({ onBack }: { onBack: () => void }) {
   return (
     <SectionShell index="// 05" title="Contact" accent="fuchsia" onBack={onBack}>
-      <p className="text-[15px] leading-relaxed text-zinc-300">
-        Open to internships and collaboration in AI/ML and full-stack engineering. Fastest way to
-        reach me is email.
-      </p>
-      <ul className="mt-5 divide-y divide-white/10 overflow-hidden rounded-lg border border-white/10">
-        {LINKS.map((l) => (
-          <li key={l.label}>
+      <Reveal>
+        <p className="text-xl leading-relaxed text-zinc-200 sm:text-2xl">
+          Open to internships and collaboration in AI/ML and full-stack engineering. Fastest way to
+          reach me is email.
+        </p>
+      </Reveal>
+
+      <div className="space-y-3">
+        {LINKS.map((l, idx) => (
+          <Reveal key={l.label} delay={idx * 0.04}>
             <a
               href={l.href}
               target={l.href.startsWith('http') ? '_blank' : undefined}
               rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="flex items-center justify-between gap-4 bg-white/[0.02] px-4 py-3 transition-colors hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/60"
+              className="group flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/[0.02] px-6 py-5 transition-colors hover:border-fuchsia-400/40 hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/60"
             >
-              <span className="font-mono text-xs uppercase tracking-widest text-fuchsia-300">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-fuchsia-300">
                 {l.label}
               </span>
-              <span className="text-sm text-zinc-200">{l.value}</span>
+              <span className="text-base text-zinc-100 sm:text-lg">{l.value}</span>
             </a>
-          </li>
+          </Reveal>
         ))}
-      </ul>
-      <p className="mt-4 font-mono text-xs text-zinc-500">Pittsburgh, PA</p>
+      </div>
+
+      <Reveal>
+        <p className="font-mono text-sm text-zinc-500">Pittsburgh, PA</p>
+      </Reveal>
     </SectionShell>
   )
 }

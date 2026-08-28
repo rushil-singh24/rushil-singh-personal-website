@@ -1,6 +1,7 @@
 'use client'
 
 import { SectionShell } from './section-shell'
+import { Reveal } from '@/components/reveal'
 
 type Role = {
   company: string
@@ -59,41 +60,46 @@ const CAMPUS = [
 export function ExperienceSection({ onBack }: { onBack: () => void }) {
   return (
     <SectionShell index="// 02" title="Experience" accent="fuchsia" onBack={onBack}>
-      <ol className="space-y-6">
-        {ROLES.map((r) => (
-          <li key={r.company} className="border-l border-fuchsia-400/30 pl-4">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-3">
-              <p className="text-[15px] font-semibold text-zinc-100">
-                {r.title} <span className="text-fuchsia-300">· {r.company}</span>
-              </p>
-              <p className="font-mono text-xs text-zinc-500">{r.period}</p>
-            </div>
-            <p className="mt-0.5 text-xs text-zinc-500">{r.location}</p>
-            <ul className="mt-2 space-y-1.5">
-              {r.points.map((p, i) => (
-                <li key={i} className="text-[13.5px] leading-relaxed text-zinc-300">
-                  {p}
-                </li>
-              ))}
-            </ul>
+      <ol className="space-y-10 border-l border-fuchsia-400/25 pl-6 sm:pl-8">
+        {ROLES.map((r, idx) => (
+          <li key={r.company} className="relative">
+            <span className="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full bg-fuchsia-400 shadow-[0_0_12px_2px_rgba(217,70,239,0.7)] sm:-left-[39px]" />
+            <Reveal delay={idx * 0.04}>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                <p className="text-lg font-semibold text-white sm:text-xl">
+                  {r.title} <span className="text-fuchsia-300">· {r.company}</span>
+                </p>
+                <p className="font-mono text-sm text-zinc-500">{r.period}</p>
+              </div>
+              <p className="mt-1 text-sm text-zinc-500">{r.location}</p>
+              <ul className="mt-3 space-y-2">
+                {r.points.map((p, i) => (
+                  <li key={i} className="text-[15px] leading-relaxed text-zinc-300 sm:text-base">
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </li>
         ))}
       </ol>
 
-      <div className="mt-7">
-        <p className="font-mono text-xs uppercase tracking-widest text-zinc-500">
-          Campus involvement
-        </p>
-        <ul className="mt-3 space-y-3">
-          {CAMPUS.map((c) => (
-            <li key={c.org} className="text-[13.5px] leading-relaxed text-zinc-300">
-              <span className="font-medium text-zinc-100">{c.org}</span>
-              <span className="text-zinc-500"> — {c.role}. </span>
-              {c.note}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Reveal>
+        <div>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+            Campus involvement
+          </p>
+          <ul className="mt-4 space-y-4">
+            {CAMPUS.map((c) => (
+              <li key={c.org} className="text-[15px] leading-relaxed text-zinc-300 sm:text-base">
+                <span className="font-medium text-white">{c.org}</span>
+                <span className="text-zinc-500"> — {c.role}. </span>
+                {c.note}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Reveal>
     </SectionShell>
   )
 }

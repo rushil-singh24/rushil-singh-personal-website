@@ -5,12 +5,14 @@ import { useSceneState } from '@/lib/scene-state-context'
 import { IntroVideo } from './intro/intro-video'
 import { SkyscraperScene } from './scene/skyscraper-scene'
 import { ContentPanel } from './scene/content-panel'
+import { CursorTrail } from './cursor-trail'
 
 export function PortfolioApp() {
   const { state } = useSceneState()
 
   return (
     <>
+      <CursorTrail />
       <AnimatePresence>
         {state.view === 'intro' && (
           <motion.div

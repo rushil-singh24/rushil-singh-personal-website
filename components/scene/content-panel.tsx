@@ -14,11 +14,11 @@ export function ContentPanel() {
       {isZoomed && entry && (
         <motion.div
           key={state.sectionId}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 24 }}
-          transition={{ duration: 0.4 }}
-          className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-4"
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.5, delay: 0.12, ease: [0.4, 0, 0.2, 1] }}
+          className="fixed inset-0 z-40"
         >
           <entry.component onBack={goBack} />
         </motion.div>

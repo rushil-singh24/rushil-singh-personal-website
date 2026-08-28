@@ -6,28 +6,25 @@ type Accent = 'cyan' | 'fuchsia' | 'amber'
 
 const ACCENT: Record<
   Accent,
-  { text: string; ring: string; glow: string; marker: string; rule: string }
+  { text: string; grad: string; rule: string; watermark: string }
 > = {
   cyan: {
     text: 'text-cyan-300',
-    ring: 'ring-cyan-400/30',
-    glow: 'shadow-[0_0_60px_-12px_rgba(34,211,238,0.45),0_0_140px_-48px_rgba(217,70,239,0.35)]',
-    marker: 'text-cyan-400',
-    rule: 'from-cyan-400/70',
+    grad: 'from-cyan-500/15',
+    rule: 'via-cyan-400/70',
+    watermark: 'text-cyan-300',
   },
   fuchsia: {
     text: 'text-fuchsia-300',
-    ring: 'ring-fuchsia-400/30',
-    glow: 'shadow-[0_0_60px_-12px_rgba(217,70,239,0.45),0_0_140px_-48px_rgba(34,211,238,0.35)]',
-    marker: 'text-fuchsia-400',
-    rule: 'from-fuchsia-400/70',
+    grad: 'from-fuchsia-500/15',
+    rule: 'via-fuchsia-400/70',
+    watermark: 'text-fuchsia-300',
   },
   amber: {
     text: 'text-amber-300',
-    ring: 'ring-amber-400/30',
-    glow: 'shadow-[0_0_60px_-12px_rgba(251,191,36,0.4),0_0_140px_-48px_rgba(217,70,239,0.3)]',
-    marker: 'text-amber-400',
-    rule: 'from-amber-400/70',
+    grad: 'from-amber-500/15',
+    rule: 'via-amber-400/70',
+    watermark: 'text-amber-300',
   },
 }
 
@@ -46,45 +43,54 @@ export function SectionShell({
 }) {
   const a = ACCENT[accent]
   return (
-    <div
-      className={`relative flex max-h-[85vh] w-[min(92vw,640px)] flex-col overflow-hidden rounded-2xl bg-[#0b0e1f]/92 text-zinc-100 ring-1 backdrop-blur-xl ${a.ring} ${a.glow}`}
-    >
+    <div className="relative flex h-dvh w-full flex-col overflow-hidden bg-[#070912] text-zinc-100">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-screen"
+        className={`pointer-events-none absolute inset-0 bg-gradient-to-b ${a.grad} to-transparent`}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-screen"
         style={{
           backgroundImage:
             'radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1.4px)',
-          backgroundSize: '7px 7px',
+          backgroundSize: '8px 8px',
         }}
       />
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute -right-6 top-2 select-none font-mono text-[26vh] font-bold leading-none opacity-[0.06] ${a.watermark}`}
+      >
+        {index.replace('// ', '')}
+      </div>
 
-      <div className="relative flex items-center justify-between gap-4 px-6 pt-5 sm:px-8">
+      <header className="relative z-10 flex items-center justify-between gap-4 px-6 py-5 sm:px-12 sm:py-7">
         <button
           onClick={onBack}
-          className="group inline-flex items-center gap-2 rounded-md px-2 py-1 font-mono text-xs uppercase tracking-widest text-zinc-400 transition-colors hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          className="group inline-flex items-center gap-2 rounded-md px-2 py-1.5 font-mono text-xs uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
         >
-          <span aria-hidden className="transition-transform group-hover:-translate-x-0.5">
+          <span aria-hidden className="text-base transition-transform group-hover:-translate-x-1">
             &larr;
           </span>
           back to the city
         </button>
-        <span className={`font-mono text-xs uppercase tracking-widest ${a.marker}`}>
+        <span className={`font-mono text-xs uppercase tracking-[0.2em] ${a.text}`}>
           {index}
         </span>
-      </div>
+      </header>
 
-      <div className="relative px-6 pt-3 sm:px-8">
-        <h2 className="relative font-mono text-2xl font-bold uppercase tracking-tight sm:text-3xl">
-          <span aria-hidden className={`absolute left-[2px] top-[1px] ${a.text} opacity-60`}>
-            {title}
-          </span>
-          <span className="relative">{title}</span>
-        </h2>
-        <div className={`mt-3 h-px w-full bg-gradient-to-r ${a.rule} to-transparent`} />
+      <div className="relative z-10 flex-1 overflow-y-auto">
+        <div className="mx-auto w-full max-w-3xl px-6 pb-28 pt-4 sm:px-12">
+          <h2 className="relative font-mono text-5xl font-bold uppercase leading-[0.95] tracking-tight sm:text-7xl">
+            <span aria-hidden className={`absolute left-[3px] top-[2px] ${a.text} opacity-50`}>
+              {title}
+            </span>
+            <span className="relative">{title}</span>
+          </h2>
+          <div className={`mt-6 h-px w-full bg-gradient-to-r from-transparent ${a.rule} to-transparent`} />
+          <div className="mt-12 space-y-12">{children}</div>
+        </div>
       </div>
-
-      <div className="relative overflow-y-auto px-6 py-5 sm:px-8 sm:py-6">{children}</div>
     </div>
   )
 }
