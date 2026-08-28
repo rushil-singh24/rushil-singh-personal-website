@@ -241,12 +241,12 @@ function TimelineColumn({
   )
 }
 
-export function ExperienceSection({ onBack }: { onBack: () => void }) {
+export function ExperienceSection() {
   const [openId, setOpenId] = useState<string | null>(null)
   const toggle = (id: string) => setOpenId((cur) => (cur === id ? null : id))
 
   return (
-    <SectionShell index="// 02" title="Experience" accent="fuchsia" onBack={onBack}>
+    <SectionShell id="experience" index="// 02" title="Experience" accent="violet">
       <div className="grid gap-y-12 md:grid-cols-2 md:gap-x-10 md:gap-y-0">
         <TimelineColumn
           heading="Work"

@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`dark ${geistSans.variable} ${geistMono.variable} ${anton.variable} h-full antialiased`}
       style={{ colorScheme: "dark" }}
     >
-      <body className="min-h-full flex flex-col bg-black">{children}</body>
+      <body className="flex min-h-full flex-col bg-[#0b0b14]">{children}</body>
     </html>
   );
 }

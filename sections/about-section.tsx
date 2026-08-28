@@ -58,9 +58,9 @@ const HOBBIES: { label: string; icon: LucideIcon }[] = [
   { label: 'Cooking', icon: ChefHat },
 ]
 
-export function AboutSection({ onBack }: { onBack: () => void }) {
+export function AboutSection() {
   return (
-    <SectionShell index="// 01" title="About" accent="cyan" onBack={onBack}>
+    <SectionShell id="about" index="// 01" title="About" accent="cyan">
       <Reveal>
         <p className="text-lg leading-relaxed text-zinc-200 sm:text-xl">{INTRO}</p>
       </Reveal>

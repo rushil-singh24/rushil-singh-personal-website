@@ -39,6 +39,7 @@ export function SceneStateProvider({ children }: { children: React.ReactNode }) 
 
   const finishIntro = () => {
     window.sessionStorage.setItem(INTRO_SEEN_KEY, 'true')
+    window.scrollTo(0, 0)
     dispatch({ type: 'INTRO_FINISHED' })
   }
 

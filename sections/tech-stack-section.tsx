@@ -81,9 +81,9 @@ const GROUPS: { label: string; items: { name: string; Icon: TechIcon }[] }[] = [
   },
 ]
 
-export function TechStackSection({ onBack }: { onBack: () => void }) {
+export function TechStackSection() {
   return (
-    <SectionShell index="// 03" title="Tech Stack" accent="amber" onBack={onBack}>
+    <SectionShell id="techstack" index="// 03" title="Tech Stack" accent="amber">
       {GROUPS.map((g, gi) => (
         <Reveal key={g.label} delay={gi * 0.05}>
           <div>

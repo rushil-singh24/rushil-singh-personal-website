@@ -38,9 +38,9 @@ const PROJECTS: Project[] = [
   },
 ]
 
-export function ProjectsSection({ onBack }: { onBack: () => void }) {
+export function ProjectsSection() {
   return (
-    <SectionShell index="// 04" title="Projects" accent="cyan" onBack={onBack}>
+    <SectionShell id="projects" index="// 04" title="Projects" accent="cyan">
       <div className="grid gap-6 sm:grid-cols-2">
         {PROJECTS.map((p, idx) => (
           <Reveal key={p.name} delay={idx * 0.05}>

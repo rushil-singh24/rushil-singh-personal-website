@@ -17,9 +17,9 @@ const LINKS = [
   { label: 'Phone', value: '(774) 777-8174', href: 'tel:+17747778174' },
 ]
 
-export function ContactSection({ onBack }: { onBack: () => void }) {
+export function ContactSection() {
   return (
-    <SectionShell index="// 05" title="Personal Info" accent="fuchsia" onBack={onBack}>
+    <SectionShell id="contact" index="// 05" title="Personal Info" accent="red">
       <Reveal>
         <p className="text-lg leading-relaxed text-zinc-200 sm:text-xl">
           Open to internships and collaboration in AI/ML and full-stack engineering. Fastest way to

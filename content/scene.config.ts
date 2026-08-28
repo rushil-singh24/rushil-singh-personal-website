@@ -1,17 +1,17 @@
-export type PanelAccent = 'cyan' | 'fuchsia' | 'amber' | 'violet'
+export type PanelAccent = 'cyan' | 'fuchsia' | 'amber' | 'violet' | 'red'
 
 export interface SectionPanel {
   id: string
   sectionId: string
   label: string
   accent: PanelAccent
-  /** Panel centre as a % of the viewport. */
+  /** Panel centre as a % of the viewport (desktop comic layout). */
   xPct: number
   yPct: number
-  /** Depth in px (negative pushes the panel further back). */
-  z: number
-  rotX: number
-  rotY: number
+  /** Panel width as a % of the viewport. */
+  wPct: number
+  /** Slight comic-panel tilt, in degrees. */
+  rotate: number
   big?: boolean
 }
 
@@ -24,13 +24,13 @@ export const sceneConfig = {
   videoPosterSrc: '/intro-poster.jpg',
   posterSrc: '/intro-poster.jpg',
 
-  // Floating section panels in the void. All positions are DOM %, so the
-  // label always sits on its panel — nothing to calibrate against baked art.
+  // Comic-page panels. Labels live inside each panel, so nothing is
+  // calibrated against baked art.
   panels: [
-    { id: 'p-about', sectionId: 'about', label: 'Rushil Singh', accent: 'cyan', xPct: 50, yPct: 49, z: 40, rotX: 0, rotY: 0, big: true },
-    { id: 'p-experience', sectionId: 'experience', label: 'Experience', accent: 'fuchsia', xPct: 17, yPct: 23, z: -80, rotX: 7, rotY: 18 },
-    { id: 'p-techstack', sectionId: 'techstack', label: 'Tech Stack', accent: 'amber', xPct: 83, yPct: 22, z: -130, rotX: 8, rotY: -20 },
-    { id: 'p-projects', sectionId: 'projects', label: 'Projects', accent: 'cyan', xPct: 16, yPct: 78, z: -60, rotX: -9, rotY: 19 },
-    { id: 'p-contact', sectionId: 'contact', label: 'Personal Info', accent: 'violet', xPct: 84, yPct: 79, z: -150, rotX: -8, rotY: -20 },
+    { id: 'p-about', sectionId: 'about', label: 'Rushil Singh', accent: 'fuchsia', xPct: 48, yPct: 50, wPct: 44, rotate: -1, big: true },
+    { id: 'p-experience', sectionId: 'experience', label: 'Experience', accent: 'violet', xPct: 15, yPct: 24, wPct: 28, rotate: -3 },
+    { id: 'p-techstack', sectionId: 'techstack', label: 'Tech Stack', accent: 'amber', xPct: 85, yPct: 22, wPct: 28, rotate: 2.5 },
+    { id: 'p-projects', sectionId: 'projects', label: 'Projects', accent: 'cyan', xPct: 15, yPct: 76, wPct: 28, rotate: 2 },
+    { id: 'p-contact', sectionId: 'contact', label: 'Personal Info', accent: 'red', xPct: 85, yPct: 74, wPct: 28, rotate: -2.5 },
   ] satisfies SectionPanel[],
 }
