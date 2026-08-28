@@ -81,8 +81,8 @@ export function SectionShell({
 
       <div className="relative z-10 flex-1 overflow-y-auto">
         <div className="mx-auto w-full max-w-3xl px-6 pb-28 pt-4 sm:px-12">
-          <h2 className="relative font-mono text-5xl font-bold uppercase leading-[0.95] tracking-tight sm:text-7xl">
-            <span aria-hidden className={`absolute left-[3px] top-[2px] ${a.text} opacity-50`}>
+          <h2 className="relative font-[family-name:var(--font-display)] text-6xl uppercase leading-[0.88] tracking-tight sm:text-8xl">
+            <span aria-hidden className={`absolute left-[3px] top-[3px] ${a.text} opacity-35`}>
               {title}
             </span>
             <span className="relative">{title}</span>

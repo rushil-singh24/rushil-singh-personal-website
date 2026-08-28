@@ -2,6 +2,12 @@
 
 import { SectionShell } from './section-shell'
 import { Reveal } from '@/components/reveal'
+import { GraduationCap, BookOpen, Sparkles } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+
+// TODO(rushil): replace with your own first-person intro paragraph.
+const INTRO =
+  'Intro paragraph coming from Rushil — a short first-person note on who he is, what he is drawn to in AI and systems work, and what he is looking for next. This placeholder will be swapped for the real copy.'
 
 const COURSEWORK = [
   'Data Structures & Algorithms',
@@ -14,49 +20,72 @@ const COURSEWORK = [
   'Calculus 3',
 ]
 
+// TODO(rushil): replace with real interests (and swap icons to match).
+const INTERESTS: { label: string; icon: LucideIcon }[] = [
+  { label: 'Interest one', icon: Sparkles },
+  { label: 'Interest two', icon: Sparkles },
+  { label: 'Interest three', icon: Sparkles },
+  { label: 'Interest four', icon: Sparkles },
+  { label: 'Interest five', icon: Sparkles },
+  { label: 'Interest six', icon: Sparkles },
+]
+
 export function AboutSection({ onBack }: { onBack: () => void }) {
   return (
     <SectionShell index="// 01" title="About" accent="cyan" onBack={onBack}>
       <Reveal>
-        <p className="text-xl leading-relaxed text-zinc-200 sm:text-2xl">
-          I&rsquo;m <span className="text-white">Rushil Singh</span>, a Carnegie Mellon student
-          building at the intersection of{' '}
-          <span className="text-cyan-300">artificial intelligence</span> and{' '}
-          <span className="text-cyan-300">information systems</span>.
-        </p>
+        <p className="text-lg leading-relaxed text-zinc-200 sm:text-xl">{INTRO}</p>
       </Reveal>
 
-      <Reveal delay={0.05}>
-        <p className="text-base leading-relaxed text-zinc-400 sm:text-lg">
-          I ship cross-platform AI agent features at Twinly, cut model size while speeding up
-          inference at Perforated AI, and built organization-wide automation as an AI engineering
-          intern at ListenFirst.
-        </p>
-      </Reveal>
-
-      <Reveal delay={0.1}>
+      <Reveal delay={0.06}>
         <div className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">Education</p>
-          <p className="mt-3 text-lg font-medium text-white">Carnegie Mellon University</p>
+          <div className="flex items-center gap-2.5">
+            <GraduationCap className="h-4 w-4 text-cyan-400" />
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
+              Carnegie Mellon University
+            </p>
+          </div>
+          <p className="mt-3 text-lg font-medium text-white">B.S. Information Systems</p>
           <p className="text-zinc-400">
-            B.S. Information Systems &middot; Minor in Artificial Intelligence
+            Minor in Artificial Intelligence &middot; Expected 2028
           </p>
-          <p className="text-zinc-400">Pittsburgh, PA &middot; Expected December 2028</p>
+          <p className="text-zinc-400">Pittsburgh, PA</p>
+
+          <div className="mt-5 border-t border-white/10 pt-4">
+            <div className="flex items-center gap-2">
+              <BookOpen className="h-3.5 w-3.5 text-zinc-500" />
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+                Relevant coursework
+              </p>
+            </div>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {COURSEWORK.map((c) => (
+                <li
+                  key={c}
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-zinc-300"
+                >
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Reveal>
 
-      <Reveal delay={0.12}>
+      <Reveal delay={0.1}>
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
-            Relevant coursework
-          </p>
-          <ul className="mt-4 flex flex-wrap gap-2.5">
-            {COURSEWORK.map((c) => (
+          <div className="flex items-center gap-2">
+            <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">Interests</p>
+          </div>
+          <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {INTERESTS.map((it) => (
               <li
-                key={c}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm text-zinc-300"
+                key={it.label}
+                className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3"
               >
-                {c}
+                <it.icon className="h-4 w-4 shrink-0 text-cyan-300" />
+                <span className="text-sm text-zinc-300">{it.label}</span>
               </li>
             ))}
           </ul>
