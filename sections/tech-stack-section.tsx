@@ -83,7 +83,7 @@ const GROUPS: { label: string; items: { name: string; Icon: TechIcon }[] }[] = [
 ]
 
 export function TechStackSection() {
-  const click = useKeyClick()
+  const { press, release } = useKeyClick()
   return (
     <SectionShell id="techstack" index="// 03" title="Tech Stack" accent="amber">
       {GROUPS.map((g, gi) => (
@@ -94,7 +94,8 @@ export function TechStackSection() {
               {g.items.map((it) => (
                 <motion.li
                   key={it.name}
-                  onMouseEnter={click}
+                  onMouseEnter={press}
+                  onMouseLeave={release}
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ type: 'spring', stiffness: 320, damping: 22 }}
                   className="group flex items-center gap-2.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 transition-colors hover:border-amber-400/40 hover:bg-amber-400/[0.07]"

@@ -3,9 +3,13 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { useReducedMotion } from '@/lib/use-reduced-motion'
 
-// Shared across every hook instance: one AudioContext, one decoded sample.
+// Keycap samples from github.com/Naresh-Khatri/3d-portfolio
+// (public/assets/keycap-sounds). Shared across every hook instance.
 let ctx: AudioContext | null = null
-let buffer: AudioBuffer | null = null
+const buffers: { press: AudioBuffer | null; release: AudioBuffer | null } = {
+  press: null,
+  release: null,
+}
 let loadStarted = false
 let unlocked = false
 
@@ -21,13 +25,16 @@ function ensureLoaded() {
   }
   if (!loadStarted && ctx) {
     loadStarted = true
-    fetch('/sfx/keyclick.wav')
-      .then((r) => r.arrayBuffer())
-      .then((b) => ctx!.decodeAudioData(b))
-      .then((buf) => {
-        buffer = buf
-      })
-      .catch(() => {})
+    const load = (url: string, key: 'press' | 'release') =>
+      fetch(url)
+        .then((r) => r.arrayBuffer())
+        .then((b) => ctx!.decodeAudioData(b))
+        .then((buf) => {
+          buffers[key] = buf
+        })
+        .catch(() => {})
+    load('/sfx/keypress.mp3', 'press')
+    load('/sfx/keyrelease.mp3', 'release')
   }
 }
 
@@ -38,8 +45,7 @@ function unlock() {
 }
 
 /**
- * Returns a function that plays a short keyboard-key click (public/sfx/
- * keyclick.wav via Web Audio). The context is unlocked on the first
+ * Keycap press / release sounds. The AudioContext is unlocked on the first
  * pointer/key event anywhere on the page. Throttled; no-op under
  * prefers-reduced-motion.
  */
@@ -63,19 +69,28 @@ export function useKeyClick() {
     }
   }, [])
 
-  return useCallback(() => {
-    if (reduced || !ctx || !buffer) return
-    const now = performance.now()
-    if (now - last.current < 38) return
-    last.current = now
+  const play = useCallback(
+    (key: 'press' | 'release', minGap: number) => {
+      if (reduced || !ctx) return
+      const buf = buffers[key]
+      if (!buf) return
+      const now = performance.now()
+      if (now - last.current < minGap) return
+      last.current = now
+      if (ctx.state === 'suspended') ctx.resume().catch(() => {})
+      const src = ctx.createBufferSource()
+      src.buffer = buf
+      src.playbackRate.value = 0.95 + Math.random() * 0.1
+      const gain = ctx.createGain()
+      gain.gain.value = key === 'press' ? 0.85 : 0.55
+      src.connect(gain).connect(ctx.destination)
+      src.start()
+    },
+    [reduced],
+  )
 
-    if (ctx.state === 'suspended') ctx.resume().catch(() => {})
-    const src = ctx.createBufferSource()
-    src.buffer = buffer
-    src.playbackRate.value = 0.93 + Math.random() * 0.14
-    const gain = ctx.createGain()
-    gain.gain.value = 0.6
-    src.connect(gain).connect(ctx.destination)
-    src.start()
-  }, [reduced])
+  const press = useCallback(() => play('press', 40), [play])
+  const release = useCallback(() => play('release', 0), [play])
+
+  return { press, release }
 }
