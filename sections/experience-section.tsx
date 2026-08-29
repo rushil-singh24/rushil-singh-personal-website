@@ -84,6 +84,7 @@ const ENTRIES: Entry[] = [
     period: 'January 2025 – April 2025',
     location: 'Northborough, MA',
     logo: '/logos/firefly.png',
+    logoBg: 'dark',
     points: [
       'Developed an interactive learning library hosting multi-format educational materials, producing 100+ hours of content through practice problems and videos to improve accessibility for 80+ elementary and middle school students',
       'Piloted curriculums for competition math classes and coding camps in Python, Scratch, and Sphero by establishing scalable lesson plans and frameworks for future instructors and program branches to ensure long-term sustainability',

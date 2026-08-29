@@ -9,6 +9,7 @@ type Project = {
   name: string
   stack: string[]
   points: string[]
+  note?: string
   demoHref: string
   sourceHref: string
 }
@@ -21,9 +22,9 @@ const PROJECTS: Project[] = [
       'Content-based music recommendation engine using Euclidean-distance matching on Spotify audio features, with fallback strategies and exclusion logic filtering 1,000+ previously-heard tracks.',
       'Gamified UI/UX with Framer Motion and real-time feedback loops behind secure login auth, plus an API integration layer with smart caching and batch processing.',
     ],
+    note: 'Reach out to be added to demo permissions.',
     demoHref: 'https://tune-bloom.vercel.app/login',
-    // TODO(rushil): exact repo URL
-    sourceHref: 'https://github.com/rushil-singh24',
+    sourceHref: 'https://github.com/rushil-singh24/TuneBloom',
   },
   {
     name: 'Option(al) Risk — Quant Finance Tool',
@@ -33,8 +34,7 @@ const PROJECTS: Project[] = [
       'Monte Carlo simulation engine processing 10,000+ price-path scenarios to compute Value-at-Risk at the 95th and 99th percentiles.',
     ],
     demoHref: 'https://options-risk-frontend.onrender.com/',
-    // TODO(rushil): exact repo URL
-    sourceHref: 'https://github.com/rushil-singh24',
+    sourceHref: 'https://github.com/rushil-singh24/OptionalRisk',
   },
 ]
 
@@ -56,13 +56,17 @@ export function ProjectsSection() {
                   </li>
                 ))}
               </ul>
-              <ul className="mt-4 flex-1 space-y-2">
+              <ul className="mt-4 space-y-2">
                 {p.points.map((pt, i) => (
                   <li key={i} className="text-sm leading-relaxed text-zinc-300">
                     {pt}
                   </li>
                 ))}
               </ul>
+              {p.note && (
+                <p className="mt-3 flex-1 text-sm font-medium text-cyan-300/90">{p.note}</p>
+              )}
+              {!p.note && <div className="flex-1" />}
               <div className="mt-5 flex flex-wrap gap-2.5">
                 <a
                   href={p.demoHref}
