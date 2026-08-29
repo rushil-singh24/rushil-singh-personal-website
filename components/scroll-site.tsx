@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useSceneState } from '@/lib/scene-state-context'
 import { AboutSection } from '@/sections/about-section'
@@ -19,7 +19,7 @@ const NAV = [
 
 export function ScrollSite() {
   const { replayIntro } = useSceneState()
-  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('about')
 
   // Background shifts through the Spider-Verse night palette as you scroll.
   const { scrollYProgress } = useScroll()
@@ -29,10 +29,26 @@ export function ScrollSite() {
     ['#171334', '#221a46', '#2c1942', '#141a3c', '#2a1230'],
   )
 
-  const go = (id: string) => {
-    setOpen(false)
+  // Scroll-spy for the top nav.
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const hit = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (hit) setActive(hit.target.id)
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.2, 0.5, 1] },
+    )
+    NAV.forEach((n) => {
+      const el = document.getElementById(n.id)
+      if (el) obs.observe(el)
+    })
+    return () => obs.disconnect()
+  }, [])
+
+  const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
 
   return (
     <div className="relative w-full">
@@ -59,56 +75,31 @@ export function ScrollSite() {
         }}
       />
 
-      {/* hamburger menu */}
-      <div className="fixed right-4 top-4 z-50 sm:right-6 sm:top-6">
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Menu"
-          aria-expanded={open}
-          className="flex h-11 w-11 items-center justify-center rounded-md border-2 border-black bg-white shadow-[3px_3px_0_0_#0b0b14] transition-transform active:translate-y-px"
-        >
-          <span className="relative block h-3 w-5">
-            <span
-              className={`absolute left-0 h-[2px] w-full bg-black transition-all duration-200 ${
-                open ? 'top-[5px] rotate-45' : 'top-0'
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[5px] h-[2px] w-full bg-black transition-all duration-200 ${
-                open ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`absolute left-0 h-[2px] w-full bg-black transition-all duration-200 ${
-                open ? 'top-[5px] -rotate-45' : 'top-[10px]'
-              }`}
-            />
-          </span>
-        </button>
-
-        {open && (
-          <nav className="absolute right-0 mt-2 w-56 overflow-hidden rounded-md border-2 border-black bg-white shadow-[5px_5px_0_0_#0b0b14]">
-            {NAV.map((n) => (
-              <button
-                key={n.id}
-                onClick={() => go(n.id)}
-                className="block w-full border-b-2 border-black/10 px-4 py-3 text-left font-[family-name:var(--font-display)] text-lg uppercase tracking-tight text-black transition-colors hover:bg-black hover:text-white"
-              >
-                {n.label}
-              </button>
-            ))}
+      {/* Top nav bar */}
+      <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:pt-4">
+        <nav className="flex max-w-[96vw] flex-wrap items-center justify-center gap-1 overflow-x-auto rounded-xl border-2 border-black bg-white/95 px-2 py-1.5 shadow-[4px_4px_0_0_#0b0b14] backdrop-blur">
+          {NAV.map((n) => (
             <button
-              onClick={() => {
-                setOpen(false)
-                replayIntro()
-              }}
-              className="block w-full px-4 py-3 text-left font-mono text-xs uppercase tracking-[0.15em] text-black/60 transition-colors hover:bg-black hover:text-white"
+              key={n.id}
+              onClick={() => go(n.id)}
+              className={`shrink-0 rounded-md px-3 py-1.5 font-[family-name:var(--font-display)] text-sm uppercase tracking-tight transition-colors ${
+                active === n.id
+                  ? 'bg-black text-white'
+                  : 'text-black hover:bg-black hover:text-white'
+              }`}
             >
-              &#9654; Replay intro
+              {n.label}
             </button>
-          </nav>
-        )}
-      </div>
+          ))}
+          <span className="mx-1 hidden h-4 w-px bg-black/20 sm:block" />
+          <button
+            onClick={replayIntro}
+            className="shrink-0 rounded-md px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-black/60 transition-colors hover:bg-black hover:text-white"
+          >
+            &#9654; Replay intro
+          </button>
+        </nav>
+      </header>
 
       <main className="relative">
         <AboutSection />

@@ -1,6 +1,8 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import { useRef, type ReactNode } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useReducedMotion } from '@/lib/use-reduced-motion'
 
 type Accent = 'cyan' | 'fuchsia' | 'amber' | 'violet' | 'red'
 
@@ -26,12 +28,30 @@ export function SectionShell({
   children: ReactNode
 }) {
   const a = ACCENT[accent]
+  const reduced = useReducedMotion()
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  // Card tilts up to face you as it scrolls into the upper half of the viewport.
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ['start 0.92', 'start 0.38'],
+  })
+  const rotateX = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [13, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], reduced ? [1, 1] : [0.93, 1])
+  const opacity = useTransform(scrollYProgress, [0, 1], reduced ? [1, 1] : [0.35, 1])
+  const titleY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [26, 0])
+
   return (
     <section
       id={id}
-      className="flex w-full scroll-mt-4 justify-center px-4 py-20 first:pt-28 sm:px-8 sm:py-28"
+      className="flex w-full scroll-mt-24 justify-center px-4 py-20 first:pt-32 sm:px-8 sm:py-28"
+      style={{ perspective: '1200px' }}
     >
-      <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl border-[3px] border-black bg-[#0b0c16]/[0.97] p-6 text-zinc-100 shadow-[10px_12px_0_0_rgba(0,0,0,0.5)] sm:p-10">
+      <motion.div
+        ref={cardRef}
+        style={{ rotateX, scale, opacity }}
+        className="relative w-full max-w-4xl overflow-hidden rounded-2xl border-[3px] border-black bg-[#0b0c16]/[0.97] p-6 text-zinc-100 shadow-[10px_12px_0_0_rgba(0,0,0,0.5)] sm:p-10"
+      >
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-screen"
@@ -49,21 +69,23 @@ export function SectionShell({
         </div>
 
         <div className="relative">
-          <span className={`font-mono text-xs uppercase tracking-[0.2em] ${a.text}`}>
-            {index}
-          </span>
-          <h2 className="relative mt-2 font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.88] tracking-tight sm:text-7xl">
-            <span aria-hidden className={`absolute left-[3px] top-[3px] ${a.text} opacity-35`}>
-              {title}
+          <motion.div style={{ y: titleY }}>
+            <span className={`font-mono text-xs uppercase tracking-[0.2em] ${a.text}`}>
+              {index}
             </span>
-            <span className="relative">{title}</span>
-          </h2>
-          <div
-            className={`mt-5 h-px w-full bg-gradient-to-r from-transparent ${a.rule} to-transparent`}
-          />
+            <h2 className="relative mt-2 font-[family-name:var(--font-display)] text-5xl uppercase leading-[0.88] tracking-tight sm:text-7xl">
+              <span aria-hidden className={`absolute left-[3px] top-[3px] ${a.text} opacity-35`}>
+                {title}
+              </span>
+              <span className="relative">{title}</span>
+            </h2>
+            <div
+              className={`mt-5 h-px w-full bg-gradient-to-r from-transparent ${a.rule} to-transparent`}
+            />
+          </motion.div>
           <div className="mt-10 space-y-12">{children}</div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
