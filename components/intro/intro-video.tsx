@@ -9,7 +9,6 @@ export function IntroVideo() {
   const { finishIntro } = useSceneState()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isMuted, setIsMuted] = useState(true)
-  const [showTapForSound, setShowTapForSound] = useState(true)
   const [autoplayBlocked, setAutoplayBlocked] = useState(false)
 
   // No video configured: skip straight to the scene.
@@ -37,12 +36,11 @@ export function IntroVideo() {
     return null
   }
 
-  const handleUnmute = () => {
+  const toggleMute = () => {
     const video = videoRef.current
     if (!video) return
-    video.muted = false
-    setIsMuted(false)
-    setShowTapForSound(false)
+    video.muted = !video.muted
+    setIsMuted(video.muted)
   }
 
   const handleManualPlay = () => {
@@ -53,10 +51,7 @@ export function IntroVideo() {
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 bg-black"
-      onClick={isMuted ? handleUnmute : undefined}
-    >
+    <div className="fixed inset-0 z-50 bg-black">
       <video
         ref={videoRef}
         className="h-full w-full object-cover"
@@ -94,19 +89,42 @@ export function IntroVideo() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {showTapForSound && !autoplayBlocked && (
-          <motion.div
-            key="tap-for-sound"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute bottom-24 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white"
+      {!autoplayBlocked && (
+        <button
+          onClick={(event) => {
+            event.stopPropagation()
+            toggleMute()
+          }}
+          aria-label={isMuted ? 'Turn sound on' : 'Turn sound off'}
+          className="absolute bottom-8 right-6 flex items-center gap-2 rounded-full border border-white/30 bg-black/50 px-4 py-2 text-sm text-white backdrop-blur transition-colors hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
           >
-            Tap for sound
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <path d="M11 5 6 9H2v6h4l5 4z" />
+            {isMuted ? (
+              <>
+                <line x1="22" y1="9" x2="16" y2="15" />
+                <line x1="16" y1="9" x2="22" y2="15" />
+              </>
+            ) : (
+              <>
+                <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                <path d="M19 5a9 9 0 0 1 0 14" />
+              </>
+            )}
+          </svg>
+          {isMuted ? 'Sound off' : 'Sound on'}
+        </button>
+      )}
 
       <button
         onClick={(event) => {
