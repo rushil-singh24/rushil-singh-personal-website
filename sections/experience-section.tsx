@@ -33,6 +33,7 @@ const ENTRIES: Entry[] = [
     period: 'June 2026 – Present',
     location: 'Remote',
     logo: '/logos/twinly.png',
+    logoBg: 'none',
     points: [
       'Designed and shipped cross-platform AI agent capabilities in Swift and Python including voice cloning, reservation booking, and automated gaming accessible through natural prompts, supporting 100+ users and 2,000+ followers',
       'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining consistently updated releases through Git version control, code reviews, and PR/MR-based feature integration',
@@ -46,6 +47,7 @@ const ENTRIES: Entry[] = [
     period: 'May 2026 – Present',
     location: 'Pittsburgh, PA',
     logo: '/logos/perforated-ai.png',
+    logoBg: 'none',
     points: [
       'Developed PyTorch-based transformer optimization techniques using Perforated Backpropagation and artificial dendrite architectures, reducing model parameters by 60% while accelerating trading-model inference by 15%+',
       'Designed W&B hyperparameter sweeps and multi-seed experimentation across 15+ parameter combinations to optimize dendrite thresholds, regularization, and module placement against baseline performance',

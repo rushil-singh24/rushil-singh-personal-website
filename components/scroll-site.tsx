@@ -116,7 +116,7 @@ export function ScrollSite() {
           alt=""
           aria-hidden
           draggable={false}
-          className="h-auto w-16 select-none opacity-80 sm:w-20"
+          className="h-auto w-[70px] select-none opacity-85 sm:w-20"
           animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
         />
