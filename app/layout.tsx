@@ -18,10 +18,29 @@ const anton = Anton({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
+const description =
+  "Artificial Intelligence & Information Systems @ CMU — software engineering, ML research, and full-stack projects.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Rushil Singh",
-  description:
-    "Rushil Singh — Artificial Intelligence & Information Systems @ CMU. Software engineering, ML research, and full-stack projects.",
+  description,
+  openGraph: {
+    title: "Rushil Singh",
+    description,
+    url: "/",
+    siteName: "Rushil Singh",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rushil Singh",
+    description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
