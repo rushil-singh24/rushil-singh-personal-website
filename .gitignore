@@ -55,3 +55,8 @@ public/leap-of-faith-*
 public/intro-poster.jpg
 public/scene-source.*
 .gstack/
+
+# ...but DO ship the site's own compressed intro (not the raw source clip)
+!public/intro.mp4
+!public/intro.webm
+!public/intro-poster.jpg
