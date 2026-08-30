@@ -14,10 +14,11 @@ type Entry = {
   period: string
   location?: string
   // Drop a square logo at public/logos/<file> and set it here to replace
-  // the generic briefcase / people icon. `logoBg: 'dark'` for light/white
-  // logos that need a dark chip to be visible.
+  // the generic briefcase / people icon. Dark logos default to a white
+  // chip; set logoBg 'none' for logos that are already light/colourful and
+  // read fine straight on the dark card.
   logo?: string
-  logoBg?: 'light' | 'dark'
+  logoBg?: 'light' | 'none'
   points: string[]
 }
 
@@ -84,7 +85,7 @@ const ENTRIES: Entry[] = [
     period: 'January 2025 – April 2025',
     location: 'Northborough, MA',
     logo: '/logos/firefly.png',
-    logoBg: 'dark',
+    logoBg: 'none',
     points: [
       'Developed an interactive learning library hosting multi-format educational materials, producing 100+ hours of content through practice problems and videos to improve accessibility for 80+ elementary and middle school students',
       'Piloted curriculums for competition math classes and coding camps in Python, Scratch, and Sphero by establishing scalable lesson plans and frameworks for future instructors and program branches to ensure long-term sustainability',
@@ -98,6 +99,7 @@ const ENTRIES: Entry[] = [
     period: 'Active Member',
     location: 'Pittsburgh, PA',
     logo: '/logos/180dc.png',
+    logoBg: 'none',
     points: [
       'Selected from a competitive applicant pool to undergo new consultant training involving developing public speaking skills, learning deck design, and more in preparation to consult non-profits in Pittsburgh on real-world projects',
     ],
@@ -110,7 +112,7 @@ const ENTRIES: Entry[] = [
     period: 'Active Member',
     location: 'Pittsburgh, PA',
     logo: '/logos/traders.png',
-    logoBg: 'dark',
+    logoBg: 'none',
     points: [
       "Built a cryptocurrency arbitrage tool achieving a 65% win rate through fine-tuning an ML model and backtesting with trade simulations to optimize discrepancies between Kalshi's BTC price prediction market and its sourcing",
     ],
@@ -123,6 +125,7 @@ const ENTRIES: Entry[] = [
     period: 'September 2025 – January 2026',
     location: 'Pittsburgh, PA',
     logo: '/logos/scottylabs.png',
+    logoBg: 'none',
     points: [
       'Led development for ScottyLinked, a LinkedIn-esque platform to connect CMU students for job and research opportunities on campus through core data models and matching logic that sorted users by 5+ skill proficiency factors',
       'Steered collaboration with Design+Technology departments with 6 others to create a UI/UX design validated by users through surveys and research on 10+ social network platforms, leading to features built with Next, React, & Supabase',
@@ -135,13 +138,14 @@ const INVOLVEMENT = ENTRIES.filter((e) => e.kind === 'involvement')
 
 function EntryIcon({ entry, side }: { entry: Entry; side: 'work' | 'involvement' }) {
   if (entry.logo) {
+    const bare = entry.logoBg === 'none'
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
         src={entry.logo}
         alt=""
-        className={`mt-0.5 h-6 w-6 shrink-0 rounded-[5px] object-contain p-[3px] ring-1 ring-white/15 ${
-          entry.logoBg === 'dark' ? 'bg-[#0f1120]' : 'bg-white'
+        className={`mt-0.5 h-6 w-6 shrink-0 object-contain ${
+          bare ? '' : 'rounded-[5px] bg-white p-[3px] ring-1 ring-white/15'
         }`}
       />
     )

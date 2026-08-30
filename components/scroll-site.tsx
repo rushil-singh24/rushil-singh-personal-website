@@ -108,6 +108,19 @@ export function ScrollSite() {
         <ProjectsSection />
         <ContactSection />
       </main>
+
+      {/* easter egg */}
+      <footer className="relative flex justify-center pb-28 pt-8">
+        <motion.img
+          src="/miles.png"
+          alt=""
+          aria-hidden
+          draggable={false}
+          className="h-auto w-16 select-none opacity-80 sm:w-20"
+          animate={{ y: [0, -12, 0], rotate: [0, 2, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </footer>
     </div>
   )
 }
