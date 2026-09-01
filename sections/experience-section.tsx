@@ -40,6 +40,19 @@ const ENTRIES: Entry[] = [
     ],
   },
   {
+    id: 'listenfirst',
+    kind: 'work',
+    title: 'AI Engineering Intern',
+    org: 'ListenFirst',
+    period: 'July 2026 – August 2026',
+    location: 'New York City, NY',
+    logo: '/logos/listenfirst.png',
+    points: [
+      "Built AI-powered workflows shipped as organization-wide Claude Skills through Python, JavaScript, and RESTful APIs that reduced manual reporting effort by 75% across 60+ projects as the Partnerships unit's sole intern",
+      'Developed production automation for monthly billing and scheduling across 40+ client accounts, cutting API call volume by 90%+ through optimized data pipelines and surfacing $15K+ in billing discrepancies missed manually',
+    ],
+  },
+  {
     id: 'twinly',
     kind: 'work',
     title: 'Software Engineer',
@@ -51,19 +64,6 @@ const ENTRIES: Entry[] = [
     points: [
       'Designed and shipped cross-platform AI agent capabilities in Swift and Python including voice cloning, reservation booking, and automated gaming accessible through natural prompts, supporting 100+ users and 2,000+ followers',
       'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining consistently updated releases through Git version control, code reviews, and PR/MR-based feature integration',
-    ],
-  },
-  {
-    id: 'listenfirst',
-    kind: 'work',
-    title: 'AI Engineering Intern',
-    org: 'ListenFirst',
-    period: 'July 2026 – August 2026',
-    location: 'New York City, NY',
-    logo: '/logos/listenfirst.png',
-    points: [
-      "Built AI-powered workflows shipped as organization-wide Claude Skills through Python, JavaScript, and RESTful APIs that reduced manual reporting effort by 75% across 60+ projects as the Partnerships unit's sole intern",
-      'Developed production automation for monthly billing and scheduling across 40+ client accounts, cutting API call volume by 90%+ through optimized data pipelines and surfacing $15K+ in billing discrepancies missed manually',
     ],
   },
   {
