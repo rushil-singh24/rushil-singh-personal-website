@@ -136,12 +136,14 @@ const ENTRIES: Entry[] = [
     id: 'phi-delta-theta',
     kind: 'involvement',
     title: 'Brother',
-    org: 'Phi Delta Theta',
+    org: 'Phi Delta Theta Pennsylvania Rho',
     period: 'January 2026 – Present',
     location: 'Pittsburgh, PA',
     logo: '/logos/phi-delta-theta.png',
     logoBg: 'none',
-    points: [],
+    points: [
+      'Engaging with a brotherhood of 100+ professionals to raise ~$2000/semester for the Live Like Lou Foundation against ALS through fundraisers and acting in a Greek Life musical show to raise money in aid of Cancer Bridges',
+    ],
   },
   {
     id: 'cmu-poker',
@@ -151,7 +153,23 @@ const ENTRIES: Entry[] = [
     period: 'September 2025 – Present',
     location: 'Pittsburgh, PA',
     logo: '/logos/cmu-poker.jpeg',
-    points: [],
+    points: [
+      'NexHacks Poker Tournament 1st Place',
+      'Jump Trading Poker Tournament Prize Winner',
+    ],
+  },
+  {
+    id: 'emerging-leaders',
+    kind: 'involvement',
+    title: 'Project Developer',
+    org: 'Emerging Leaders',
+    period: 'January 2026 – April 2026',
+    location: 'Pittsburgh, PA',
+    logo: '/logos/emerging-leaders.png',
+    points: [
+      'Nominated to partake in a leadership program to develop innovative action plans for 8 different NPOs in Pittsburgh',
+      'Working with CMU Dining Services to build a GrubHub-integrated student delivery service, improving accessibility, efficiency, and convenience to meal access while creating new roles based on 150+ student perception survey responses',
+    ],
   },
   {
     id: 'scottylabs',
