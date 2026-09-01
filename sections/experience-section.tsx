@@ -94,6 +94,19 @@ const ENTRIES: Entry[] = [
     ],
   },
   {
+    id: 'wentworth',
+    kind: 'work',
+    title: 'Research Assistant',
+    org: 'Wentworth Institute of Technology',
+    period: 'June 2024 – January 2025',
+    location: 'Boston, MA',
+    logo: '/logos/wentworth.jpeg',
+    points: [
+      'Synthesized 100+ published pages of research from arXiv on generative AI & LLM’s into presentations which were integrated into 2 separate WIT research projects',
+      'Collaborated with Professor Salem Othman to design an LLM framework through Python, APIs, and prompt engineering that interprets user intent from emoji strings on social media to alleviate communication barriers',
+    ],
+  },
+  {
     id: '180dc',
     kind: 'involvement',
     title: 'Student Consultant',
@@ -118,6 +131,27 @@ const ENTRIES: Entry[] = [
     points: [
       "Built a cryptocurrency arbitrage tool achieving a 65% win rate through fine-tuning an ML model and backtesting with trade simulations to optimize discrepancies between Kalshi's BTC price prediction market and its sourcing",
     ],
+  },
+  {
+    id: 'phi-delta-theta',
+    kind: 'involvement',
+    title: 'Brother',
+    org: 'Phi Delta Theta',
+    period: 'January 2026 – Present',
+    location: 'Pittsburgh, PA',
+    logo: '/logos/phi-delta-theta.png',
+    logoBg: 'none',
+    points: [],
+  },
+  {
+    id: 'cmu-poker',
+    kind: 'involvement',
+    title: 'Member',
+    org: 'CMU Poker Club',
+    period: 'September 2025 – Present',
+    location: 'Pittsburgh, PA',
+    logo: '/logos/cmu-poker.jpeg',
+    points: [],
   },
   {
     id: 'scottylabs',
@@ -190,14 +224,20 @@ function TimelineColumn({
       <ol className="space-y-5">
         {entries.map((e, idx) => {
           const isOpen = openId === e.id
+          const expandable = e.points.length > 0
           return (
             <li key={e.id} className="relative">
               <span className={nodeClasses} />
               <Reveal delay={idx * 0.03}>
                 <button
-                  onClick={() => onToggle(e.id)}
-                  aria-expanded={isOpen}
-                  className="flex w-full items-start gap-4 rounded-lg px-3 py-4 text-left transition-colors hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400/50"
+                  onClick={() => expandable && onToggle(e.id)}
+                  aria-expanded={expandable ? isOpen : undefined}
+                  disabled={!expandable}
+                  className={`flex w-full items-start gap-4 rounded-lg px-3 py-4 text-left transition-colors focus-visible:outline-none ${
+                    expandable
+                      ? 'hover:bg-white/[0.03] focus-visible:ring-2 focus-visible:ring-fuchsia-400/50'
+                      : 'cursor-default'
+                  }`}
                 >
                   <EntryIcon entry={e} side={side} />
                   <span className="min-w-0 flex-1">
@@ -207,14 +247,16 @@ function TimelineColumn({
                     </span>
                     <span className="mt-1 block font-mono text-xs text-zinc-500">{e.period}</span>
                   </span>
-                  <ChevronDown
-                    className={`mt-1 h-4 w-4 shrink-0 text-zinc-500 transition-transform ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                  />
+                  {expandable && (
+                    <ChevronDown
+                      className={`mt-1 h-4 w-4 shrink-0 text-zinc-500 transition-transform ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  )}
                 </button>
                 <AnimatePresence initial={false}>
-                  {isOpen && (
+                  {expandable && isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
