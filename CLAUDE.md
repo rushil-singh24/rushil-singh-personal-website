@@ -29,9 +29,7 @@ theme (comic ink borders, halftone, neon accents, scroll-linked bg colour).
 ### Updating the resume
 1. Replace `public/rushil-singh-resume.pdf` with the new file (keep the name).
 2. Update whatever changed in the matching section file(s): roles/bullets →
-   `sections/experience-section.tsx` (Work + Involvement share one date-scaled
-   vertical timeline; each entry needs `start`/`end` `YYYY-MM` — row order and
-   dot spacing derive from those, not array position); coursework/interests → `about-section.tsx`;
+   `sections/experience-section.tsx`; coursework/interests → `about-section.tsx`;
    skills → `tech-stack-section.tsx`; projects → `projects-section.tsx`.
    Bullet text is verbatim from the resume — do not rephrase it.
 
