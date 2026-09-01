@@ -26,20 +26,6 @@ type Entry = {
 // Bullet text is verbatim from Rushil's resume / messages — do not rephrase.
 const ENTRIES: Entry[] = [
   {
-    id: 'twinly',
-    kind: 'work',
-    title: 'Software Engineer',
-    org: 'Twinly',
-    period: 'June 2026 – Present',
-    location: 'Remote',
-    logo: '/logos/twinly.png',
-    logoBg: 'none',
-    points: [
-      'Designed and shipped cross-platform AI agent capabilities in Swift and Python including voice cloning, reservation booking, and automated gaming accessible through natural prompts, supporting 100+ users and 2,000+ followers',
-      'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining consistently updated releases through Git version control, code reviews, and PR/MR-based feature integration',
-    ],
-  },
-  {
     id: 'perforated-ai',
     kind: 'work',
     title: 'Machine Learning Research Collaborator',
@@ -51,6 +37,20 @@ const ENTRIES: Entry[] = [
     points: [
       'Developed PyTorch-based transformer optimization techniques using Perforated Backpropagation and artificial dendrite architectures, reducing model parameters by 60% while accelerating trading-model inference by 15%+',
       'Designed W&B hyperparameter sweeps and multi-seed experimentation across 15+ parameter combinations to optimize dendrite thresholds, regularization, and module placement against baseline performance',
+    ],
+  },
+  {
+    id: 'twinly',
+    kind: 'work',
+    title: 'Software Engineer',
+    org: 'Twinly',
+    period: 'June 2026 – August 2026',
+    location: 'Remote',
+    logo: '/logos/twinly.png',
+    logoBg: 'none',
+    points: [
+      'Designed and shipped cross-platform AI agent capabilities in Swift and Python including voice cloning, reservation booking, and automated gaming accessible through natural prompts, supporting 100+ users and 2,000+ followers',
+      'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining consistently updated releases through Git version control, code reviews, and PR/MR-based feature integration',
     ],
   },
   {
