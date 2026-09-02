@@ -64,7 +64,6 @@ const PROJECTS: Project[] = [
       'Local-first tool for chatting with CSV, Excel, and Parquet datasets, where every answer is grounded in the uploaded data and unanswerable questions are refused rather than hallucinated.',
       'Shows a transparent analysis plan before each answer and executes generated Pandas/DuckDB code under AST validation and restricted globals, running entirely on localhost with a local LLM.',
     ],
-    note: 'Runs locally — no hosted demo.',
     sourceHref: 'https://github.com/rushil-singh24/Dataset-Agent',
   },
 ]
