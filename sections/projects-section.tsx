@@ -60,8 +60,8 @@ const PROJECTS: Project[] = [
     name: 'Canopy — Sustainability Rewards',
     stack: ['React 18', 'TypeScript', 'Node / Express', 'XRP Ledger', 'Nessie API', 'Recharts'],
     points: [
-      'Full-stack sustainability app that integrates Capital One\u2019s Nessie API and the XRP Ledger to gamify eco-conscious spending: real-time transaction analysis, rewards paid in an XRP-pegged “Canopy Coin”, and leaderboards over sample transactions and user profiles.',
-      'Custom ML scoring algorithm weighs 5 sustainability factors into a personalized 0\u2013100 score with AI behavioral insights, on a React 18 + TypeScript frontend (Framer Motion, Recharts) and a Node/Express backend managing shared wallet pools, with XRPL testnet integration (xrpl.js) for automated wallet creation and 1:1 USD-pegged token rewards.',
+      'Sustainability app that scores eco-conscious spending from bank transactions (Capital One Nessie API) using a 5-factor ML model that outputs a 0\u2013100 rating with AI behavioral insights.',
+      'Pays XRP-pegged “Canopy Coin” rewards through XRPL testnet, with shared wallet pools and friend leaderboards, on a React + TypeScript frontend using Framer Motion and Recharts.',
     ],
     note: 'Team hackathon project.',
     sourceHref: 'https://github.com/rushil-singh24/canopy',
