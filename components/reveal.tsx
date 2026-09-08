@@ -12,14 +12,17 @@ import { useReducedMotion } from '@/lib/use-reduced-motion'
 export function Reveal({
   children,
   delay = 0,
+  className,
 }: {
   children: ReactNode
   delay?: number
+  className?: string
 }) {
   const reduced = useReducedMotion()
-  if (reduced) return <>{children}</>
+  if (reduced) return className ? <div className={className}>{children}</div> : <>{children}</>
   return (
     <motion.div
+      className={className}
       initial={{ opacity: 0, y: 22 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay, ease: [0.2, 0, 0.15, 1] }}

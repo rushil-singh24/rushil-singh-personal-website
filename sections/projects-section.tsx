@@ -26,6 +26,16 @@ const PROJECTS: Project[] = [
     sourceHref: 'https://github.com/rushil-singh24/squidspell',
   },
   {
+    name: 'Snake Duel — Real-Time 1v1 Multiplayer',
+    stack: ['C++', 'SDL2', 'WebAssembly', 'WebSockets', 'Docker'],
+    points: [
+      'A two-player snake game you play right in the browser: jump straight into a match against the computer, or open a private room and send a friend the link to face off from any two devices. Written from scratch in C++ with no game engine, then packaged to run both as a desktop app and inside a web page.',
+      'The same match logic runs on every player’s screen and on a referee server in the middle, so the two sides always agree on exactly what happened, whatever the connection. Backed by 73 automated tests and a small always-on server — no database — that hands out rooms and keeps each game in sync about ten times a second.',
+    ],
+    demoHref: 'https://snake-duel.vercel.app',
+    sourceHref: 'https://github.com/rushil-singh24/snake-duel',
+  },
+  {
     name: 'TuneBloom — Music Discovery',
     stack: ['JavaScript', 'React', 'Tailwind CSS', 'REST API', 'PostgreSQL'],
     points: [
@@ -54,7 +64,6 @@ const PROJECTS: Project[] = [
       'My contribution: integrated the weighted 5-factor ML scoring model into the app, along with negative-event handling, the XRP reward logic, and the profile and insights UI.',
     ],
     note: 'Team hackathon project.',
-    demoHref: 'https://canopyrewards.vercel.app',
     sourceHref: 'https://github.com/rushil-singh24/canopy',
   },
   {
@@ -122,12 +131,20 @@ export function ProjectsSection() {
             </article>
           </Reveal>
         ))}
-        <Reveal delay={PROJECTS.length * 0.05}>
-          <article className="flex h-full min-h-[180px] flex-col items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-6 text-center">
+        <Reveal
+          delay={PROJECTS.length * 0.05}
+          className={PROJECTS.length % 2 === 0 ? 'sm:col-span-2' : undefined}
+        >
+          <article
+            className={
+              'flex flex-col items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/[0.02] text-center ' +
+              (PROJECTS.length % 2 === 0 ? 'px-6 py-4' : 'h-full min-h-[180px] p-6')
+            }
+          >
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
               More coming soon
             </p>
-            <p className="mt-2 text-sm text-zinc-600">New projects in progress.</p>
+            <p className="mt-1 text-sm text-zinc-600">New projects in progress.</p>
           </article>
         </Reveal>
       </div>
