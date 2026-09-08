@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
       'A two-player snake game you play right in the browser: jump straight into a match against the computer, or open a private room and send a friend the link to face off from any two devices. Written from scratch in C++ with no game engine, then packaged to run both as a desktop app and inside a web page.',
       'The same match logic runs on every player’s screen and on a referee server in the middle, so the two sides always agree on exactly what happened, whatever the connection. Backed by 73 automated tests and a small always-on server — no database — that hands out rooms and keeps each game in sync about ten times a second.',
     ],
-    demoHref: 'https://snake-duel.vercel.app',
+    demoHref: 'https://snake-duel-pied.vercel.app',
     sourceHref: 'https://github.com/rushil-singh24/snake-duel',
   },
   {
