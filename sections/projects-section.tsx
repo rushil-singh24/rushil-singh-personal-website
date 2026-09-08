@@ -26,11 +26,11 @@ const PROJECTS: Project[] = [
     sourceHref: 'https://github.com/rushil-singh24/squidspell',
   },
   {
-    name: 'Snake Duel — Real-Time 1v1 Multiplayer',
+    name: 'Snake Duel — 1v1 Multiplayer Game',
     stack: ['C++', 'SDL2', 'WebAssembly', 'WebSockets', 'Docker'],
     points: [
-      'A two-player snake game you play right in the browser: jump straight into a match against the computer, or open a private room and send a friend the link to face off from any two devices. Written from scratch in C++ with no game engine, then packaged to run both as a desktop app and inside a web page.',
-      'The same match logic runs on every player’s screen and on a referee server in the middle, so the two sides always agree on exactly what happened, whatever the connection. Backed by 73 automated tests and a small always-on server — no database — that hands out rooms and keeps each game in sync about ten times a second.',
+      'Created a real-time online and local 1v1 multiplayer game in C++, sharing one game-logic core across a desktop app, a WebAssembly browser build, and the match server so every device remains synced identically with the server.',
+      'Shipped a 10 Hz authoritative WebSocket game server with an in-memory room registry and a JSON protocol, deployed as a single Docker container, with 73 automated tests spanning the simulation, bot AI, and wire protocol.',
     ],
     demoHref: 'https://snake-duel-pied.vercel.app',
     sourceHref: 'https://github.com/rushil-singh24/snake-duel',
