@@ -58,7 +58,7 @@ const ENTRIES: Entry[] = [
     title: 'Software Engineer',
     org: 'Twinly',
     period: 'June 2026 – August 2026',
-    location: 'Remote',
+    location: 'Remote, EST',
     logo: '/logos/twinly.png',
     logoBg: 'none',
     points: [

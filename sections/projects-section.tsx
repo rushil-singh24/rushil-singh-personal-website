@@ -16,7 +16,7 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    name: 'SquidSpell — Real-Time ASL Fingerspelling',
+    name: 'SquidSpell — ASL Fingerspelling Tool',
     stack: ['Python', 'FastAPI', 'WebSockets', 'scikit-learn', 'MediaPipe', 'React', 'TypeScript', 'Supabase'],
     points: [
       'Built a real-time Computer Vision app that runs browser hand tracking to recognize the ASL alphabet with MediaPipe and streams data over WebSockets to a Python service that classifies each letter at 99.4% test accuracy.',
@@ -26,7 +26,7 @@ const PROJECTS: Project[] = [
     sourceHref: 'https://github.com/rushil-singh24/squidspell',
   },
   {
-    name: 'Snake Duel — 1v1 Multiplayer Game',
+    name: 'Snake Duel — Real-Time Multiplayer Game',
     stack: ['C++', 'SDL2', 'WebAssembly', 'WebSockets', 'Docker'],
     points: [
       'Created a real-time online and local 1v1 multiplayer game in C++, sharing one game-logic core across a desktop app, a WebAssembly browser build, and the match server so every device remains synced identically with the server.',
