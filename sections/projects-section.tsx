@@ -19,8 +19,8 @@ const PROJECTS: Project[] = [
     name: 'SquidSpell — Real-Time ASL Fingerspelling',
     stack: ['Python', 'FastAPI', 'WebSockets', 'scikit-learn', 'MediaPipe', 'React', 'TypeScript', 'Supabase'],
     points: [
-      'Full-stack computer-vision app that reads ASL fingerspelling from a live webcam, with in-browser MediaPipe hand tracking that sends only 21 hand landmarks per frame over a WebSocket, keeping the camera feed on the user’s device.',
-      'Engineered hand-geometry features feed a RandomForest at 99.4% test accuracy across 24 static letters, plus a separate gated classifier for the motion letters J and Z.',
+      'Built a real-time Computer Vision app that runs browser hand tracking to recognize the ASL alphabet with MediaPipe and streams data over WebSockets to a Python service that classifies each letter at 99.4% test accuracy.',
+      'Deployed the full stack on Vercel and Render with 200+ automated tests, using Supabase (PostgreSQL, RLS, Google OAuth) for accounts, saved history, and a global speed-test leaderboard, with all game scoring handled on server-side.',
     ],
     demoHref: 'https://squidspell.vercel.app',
     sourceHref: 'https://github.com/rushil-singh24/squidspell',
