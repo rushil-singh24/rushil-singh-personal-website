@@ -30,13 +30,13 @@ const ENTRIES: Entry[] = [
     kind: 'work',
     title: 'Machine Learning Research Collaborator',
     org: 'Perforated AI',
-    period: 'May 2026 – Present',
+    period: 'May 2026 – October 2026',
     location: 'Pittsburgh, PA',
     logo: '/logos/perforated-ai.png',
     logoBg: 'none',
     points: [
-      'Developed PyTorch-based transformer optimization techniques using Perforated Backpropagation and artificial dendrite architectures, reducing model parameters by 60% while accelerating trading-model inference by 15%+',
-      'Designed W&B hyperparameter sweeps and multi-seed experimentation across 15+ parameter combinations to optimize dendrite thresholds, regularization, and module placement against baseline performance',
+      'Co-authored “Pruning Then Perforating: Dendrites Recover What Structured Pruning Removes” (under ICLR 2027 review), investigating neural network compression by combining structured pruning with Perforated Backpropagation',
+      'Evaluated L2 magnitude and Taylor-based pruning experiments on ResNet-18 image classification, improving accuracy by up to 1.60 percentage points through introducing artificial dendrite architectures to recover lost model accuracy',
     ],
   },
   {
@@ -48,8 +48,8 @@ const ENTRIES: Entry[] = [
     location: 'New York City, NY',
     logo: '/logos/listenfirst.png',
     points: [
-      "Built AI-powered workflows shipped as organization-wide Claude Skills through Python, JavaScript, and RESTful APIs that reduced manual reporting effort by 75% across 60+ projects as the Partnerships unit's sole intern",
-      'Developed production automation for monthly billing and scheduling across 40+ client accounts, cutting API call volume by 90%+ through optimized data pipelines and surfacing $15K+ in billing discrepancies missed manually',
+      "Built AI-powered reporting workflows as the Partnerships unit's sole intern, deploying organization-wide Claude Skills using Python, JavaScript, and RESTful APIs that reduced manual effort by 75% across 60+ projects for the team",
+      'Developed production automation for monthly billing and scheduling across 40+ client accounts, cutting API call volume by 90%+ through streamlined data pipelines and surfacing $15K+ in billing discrepancies missed manually',
     ],
   },
   {
@@ -62,8 +62,8 @@ const ENTRIES: Entry[] = [
     logo: '/logos/twinly.png',
     logoBg: 'none',
     points: [
-      'Designed and shipped cross-platform AI agent capabilities in Swift and Python including voice cloning, reservation booking, and automated gaming accessible through natural prompts, supporting 100+ users and 2,000+ followers',
-      'Deployed Electron desktop builds across macOS and Windows, debugging platform-specific issues and maintaining consistently updated releases through Git version control, code reviews, and PR/MR-based feature integration',
+      'Built and shipped cross-platform AI agent capabilities in Swift and Python, developing voice cloning, reservation booking, and automated gaming features accessible through natural prompts for 100+ users and 2,000+ followers',
+      'Contributed through code reviews and PR/MR-based feature integration while deploying Electron desktop builds across macOS and Windows and resolving platform-specific issues to maintain consistently updated releases',
     ],
   },
   {
@@ -116,20 +116,20 @@ const ENTRIES: Entry[] = [
     logo: '/logos/180dc.png',
     logoBg: 'none',
     points: [
-      'Selected from a competitive applicant pool to undergo new consultant training involving developing public speaking skills, learning deck design, and more in preparation to consult non-profits in Pittsburgh on real-world projects',
+      'Analyze annual visitation, sales, and income data for Riverlife to identify demand patterns and rental opportunities, translating data-driven findings into recommendations for target customer segments, timings, and seasonal revenue',
     ],
   },
   {
     id: 'traders',
     kind: 'involvement',
-    title: 'Prediction Market Analyst',
+    title: 'Sports Markets Team Lead',
     org: 'Traders @ CMU',
     period: 'February 2026 – Present',
     location: 'Pittsburgh, PA',
     logo: '/logos/traders.png',
     logoBg: 'none',
     points: [
-      "Built a cryptocurrency arbitrage tool achieving a 65% win rate through fine-tuning an ML model and backtesting with trade simulations to optimize discrepancies between Kalshi's BTC price prediction market and its sourcing",
+      'Lead a team investigating sports prediction-market arbitrage and edge cases, integrating live game data and APIs into Python research pipelines to analyze 15K Kalshi markets and evaluate low latency trading strategies after fees',
     ],
   },
   {
