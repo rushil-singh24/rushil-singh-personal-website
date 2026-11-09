@@ -156,6 +156,8 @@ const ENTRIES: Entry[] = [
     points: [
       'NexHacks Poker Tournament 1st Place',
       'Jump Trading Poker Tournament Prize Winner',
+      'GTS Poker Tournament Top 30',
+      'CMU MSCF Poker Tournament 3rd Place',
     ],
   },
   {
